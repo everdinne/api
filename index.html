@@ -1,43 +1,33 @@
-import { motion } from "framer-motion";
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Evelyn's Lab</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Evelyn's Digital Lab</h1>
+    <p>探索｜Data Science｜AI｜Philosophy｜Psychology</p>
+  </header>
 
-export default function HomePage() {
-  return (
-    <div className="min-h-screen bg-[#f6f4ee] text-[#1c1c1c] font-sans">
-      {/* Header */}
-      <header className="flex justify-between items-center px-8 py-4 shadow-md bg-white sticky top-0 z-50">
-        <h1 className="text-xl font-bold tracking-wide">Evelyn</h1>
-        <nav className="space-x-6 text-sm font-medium">
-          <a href="#home" className="hover:text-[#264e36] transition-colors">Home</a>
-          <a href="#blog" className="hover:text-[#264e36] transition-colors">Blog</a>
-          <a href="#projects" className="hover:text-[#264e36] transition-colors">Projects</a>
-          <a href="#contact" className="hover:text-[#264e36] transition-colors">Contact</a>
-        </nav>
-      </header>
+  <main>
+    <h2>Welcome ✨</h2>
+    <p>
+      This is a personal experimental platform that records my learning and creation in the fields of data science, artificial intelligence, philosophy and psychology.
+      I hope this can become a gentle and professional corner to witness my growth.
+    </p>
+    <p>
+      Next, this website will gradually increase content and functions, whether it is a blog, a work display, or a personal brand in the future.
+      I hope to maintain my own style and depth.
+    </p>
+  </main>
 
-      {/* Hero Section */}
-      <section id="home" className="flex flex-col items-center justify-center text-center py-40 px-6">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 1 }}
-          className="text-4xl md:text-6xl font-bold mb-6"
-        >
-          Welcome to my digital garden.
-        </motion.h2>
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ delay: 0.5, duration: 1 }}
-          className="max-w-2xl text-lg md:text-xl text-gray-700"
-        >
-          Exploring Data, AI, APIs, and the philosophy behind them.
-        </motion.p>
-      </section>
+  <footer>
+    <p>© 2025 Evelyn｜All rights reserved.</p>
+  </footer>
 
-      {/* Footer */}
-      <footer className="text-center py-6 text-sm text-gray-500 border-t">
-        © 2025 Evelyn. All rights reserved.
-      </footer>
-    </div>
-  );
-}
+  <script src="script.js"></script>
+</body>
+</html>
