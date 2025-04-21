@@ -1,33 +1,101 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Evelyn's Lab</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <h1>Evelyn's Digital Lab</h1>
-    <p>探索｜Data Science｜AI｜Philosophy｜Psychology</p>
-  </header>
-
-  <main>
-    <h2>Welcome ✨</h2>
-    <p>
-      This is a personal experimental platform that records my learning and creation in the fields of data science, artificial intelligence, philosophy and psychology.
-      I hope this can become a gentle and professional corner to witness my growth.
-    </p>
-    <p>
-      Next, this website will gradually increase content and functions, whether it is a blog, a work display, or a personal brand in the future.
-      I hope to maintain my own style and depth.
-    </p>
-  </main>
-
-  <footer>
-    <p>© 2025 Evelyn｜All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evelyn's Space</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #0f0f0f;
+        color: #f2f2f2;
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+      }
+      header {
+        padding: 3rem 2rem;
+        text-align: center;
+        background-color: #181818;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        animation: fadeInDown 1s ease forwards;
+        opacity: 0;
+      }
+      header p {
+        font-size: 1.1rem;
+        color: #bbb;
+        animation: fadeInDown 1.2s ease forwards;
+        opacity: 0;
+      }
+      main {
+        max-width: 800px;
+        margin: 4rem auto;
+        padding: 0 2rem;
+        animation: fadeInUp 1.3s ease forwards;
+        opacity: 0;
+      }
+      main h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+      main p {
+        font-size: 1rem;
+        color: #ddd;
+        margin-bottom: 1rem;
+      }
+      footer {
+        text-align: center;
+        padding: 2rem;
+        background-color: #181818;
+        color: #777;
+        font-size: 0.9rem;
+      }
+      @keyframes fadeInDown {
+        from {
+          transform: translateY(-20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Evelyn's Studio</h1>
+      <p>Exploring Data, AI, Philosophy, and the Human Mind</p>
+    </header>
+    <main>
+      <h2>Welcome to My World</h2>
+      <p>This space is a quiet archive for thoughts, projects, and ideas, blending the structured logic of data science with the fluid introspection of philosophy and psychology.</p>
+      <p>I’m currently learning and building in the fields of Data Science, AI, and APIs, while continuing to nurture my literary and philosophical roots.</p>
+      <p>In time, this space will grow with me, documenting both technical and emotional landscapes.</p>
+    </main>
+    <footer>
+      &copy; 2025 Evelyn. All rights reserved.
+    </footer>
+  </body>
 </html>
+
