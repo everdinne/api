@@ -9,7 +9,7 @@
     <style>
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #0e0e0e;
+        background: linear-gradient(to bottom, #0e0e0e, #1a1a1a);
         color: #f2f2f2;
       }
       .fade-in {
@@ -43,9 +43,12 @@
     </style>
   </head>
   <body class="bg-black text-white">
-    <header class="w-full py-6 px-8 bg-gradient-to-b from-black via-zinc-900 to-black shadow-md">
+    <header class="w-full py-6 px-8 bg-gradient-to-b from-black via-zinc-900 to-black shadow-md border-b border-zinc-800 relative">
+      <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-fuchsia-500/30 via-blue-400/30 to-transparent blur-sm"></div>
       <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <h1 class="text-3xl font-bold tracking-tight fade-in">Evelyn's Lab</h1>
+        <h1 class="text-3xl font-bold tracking-tight bg-gradient-to-r from-fuchsia-500 to-blue-400 text-transparent bg-clip-text drop-shadow-lg fade-in">
+          Evelyn's Lab
+        </h1>
         <nav class="space-x-6 text-zinc-400 text-sm fade-in">
           <a href="#projects" class="hover:text-white underline-hover transition">Projects</a>
           <a href="#about" class="hover:text-white underline-hover transition">About</a>
@@ -55,7 +58,9 @@
     </header>
 
     <section class="text-center py-24 px-4 bg-black">
-      <h2 class="text-4xl font-bold fade-in">Welcome to Evelyn's World of Exploration</h2>
+      <h2 class="text-4xl font-bold fade-in tracking-tight leading-snug">
+        Welcome to Evelyn's World of Exploration
+      </h2>
       <p class="mt-4 text-zinc-400 max-w-xl mx-auto fade-in" style="transition-delay: 0.2s">
         A portfolio of thoughts, data, AI, and the APIs behind the curtain.
       </p>
@@ -63,18 +68,18 @@
 
     <section id="projects" class="py-20 px-4 bg-zinc-950">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold mb-12 text-center fade-in">Projects</h2>
+        <h2 class="text-3xl font-bold mb-12 text-center fade-in tracking-wide text-zinc-200">Projects</h2>
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-zinc-900 p-6 rounded-2xl shadow-lg fade-in transform transition hover:scale-105 hover:shadow-2xl">
-            <h3 class="text-xl font-semibold mb-2">AI UPDATE</h3>
+          <div class="bg-zinc-900/80 backdrop-blur p-6 rounded-2xl shadow-lg fade-in transform transition hover:scale-105 hover:shadow-2xl border border-zinc-800">
+            <h3 class="text-xl font-semibold mb-2 tracking-tight">AI UPDATE</h3>
             <p class="text-zinc-400">Latest insights, experiments, and musings on artificial intelligence advancements.</p>
           </div>
-          <div class="bg-zinc-900 p-6 rounded-2xl shadow-lg fade-in transform transition hover:scale-105 hover:shadow-2xl" style="transition-delay: 0.2s">
-            <h3 class="text-xl font-semibold mb-2">DATA SCIENCE</h3>
+          <div class="bg-zinc-900/80 backdrop-blur p-6 rounded-2xl shadow-lg fade-in transform transition hover:scale-105 hover:shadow-2xl border border-zinc-800" style="transition-delay: 0.2s">
+            <h3 class="text-xl font-semibold mb-2 tracking-tight">DATA SCIENCE</h3>
             <p class="text-zinc-400">Exploring data, patterns, and the logic that brings stories to numbers.</p>
           </div>
-          <div class="bg-zinc-900 p-6 rounded-2xl shadow-lg fade-in transform transition hover:scale-105 hover:shadow-2xl" style="transition-delay: 0.4s">
-            <h3 class="text-xl font-semibold mb-2">API LOADING</h3>
+          <div class="bg-zinc-900/80 backdrop-blur p-6 rounded-2xl shadow-lg fade-in transform transition hover:scale-105 hover:shadow-2xl border border-zinc-800" style="transition-delay: 0.4s">
+            <h3 class="text-xl font-semibold mb-2 tracking-tight">API LOADING</h3>
             <p class="text-zinc-400">Experiments and hacks with public APIs, automation, and web integration.</p>
           </div>
         </div>
