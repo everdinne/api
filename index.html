@@ -4,98 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evelyn's Space</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
       body {
-        background-color: #0f0f0f;
-        color: #f2f2f2;
         font-family: 'Inter', sans-serif;
-        line-height: 1.6;
+        background-color: #0f0f0f;
+        color: #f9f9f9;
       }
-      header {
-        padding: 3rem 2rem;
-        text-align: center;
-        background-color: #181818;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      }
-      header h1 {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-        animation: fadeInDown 1s ease forwards;
+      .fade-in {
         opacity: 0;
-      }
-      header p {
-        font-size: 1.1rem;
-        color: #bbb;
-        animation: fadeInDown 1.2s ease forwards;
-        opacity: 0;
-      }
-      main {
-        max-width: 800px;
-        margin: 4rem auto;
-        padding: 0 2rem;
-        animation: fadeInUp 1.3s ease forwards;
-        opacity: 0;
-      }
-      main h2 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-      }
-      main p {
-        font-size: 1rem;
-        color: #ddd;
-        margin-bottom: 1rem;
-      }
-      footer {
-        text-align: center;
-        padding: 2rem;
-        background-color: #181818;
-        color: #777;
-        font-size: 0.9rem;
-      }
-      @keyframes fadeInDown {
-        from {
-          transform: translateY(-20px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease forwards;
       }
       @keyframes fadeInUp {
-        from {
-          transform: translateY(20px);
-          opacity: 0;
-        }
         to {
-          transform: translateY(0);
           opacity: 1;
+          transform: translateY(0);
         }
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>Evelyn's Studio</h1>
-      <p>Exploring Data, AI, Philosophy, and the Human Mind</p>
+    <!-- Header -->
+    <header class="p-6 text-center border-b border-gray-800">
+      <h1 class="text-4xl font-bold">Evelyn's Space</h1>
+      <p class="text-gray-400 mt-2">Where intuition meets intelligence.</p>
     </header>
-    <main>
-      <h2>Welcome to My World</h2>
-      <p>This space is a quiet archive for thoughts, projects, and ideas, blending the structured logic of data science with the fluid introspection of philosophy and psychology.</p>
-      <p>I’m currently learning and building in the fields of Data Science, AI, and APIs, while continuing to nurture my literary and philosophical roots.</p>
-      <p>In time, this space will grow with me, documenting both technical and emotional landscapes.</p>
-    </main>
-    <footer>
-      &copy; 2025 Evelyn. All rights reserved.
+
+    <!-- Hero Section -->
+    <section class="flex flex-col items-center justify-center h-screen text-center px-4">
+      <div class="fade-in">
+        <h2 class="text-5xl font-bold mb-4">Data, AI & Thought</h2>
+        <p class="text-lg text-gray-400 max-w-xl mx-auto mb-8">
+          Exploring the intersections of logic, emotion, and creativity through technology and introspection.
+        </p>
+        <div class="space-x-4">
+          <a href="#about" class="bg-white text-black font-semibold py-2 px-4 rounded-xl hover:bg-gray-300 transition">Explore More</a>
+          <a href="#contact" class="border border-white py-2 px-4 rounded-xl hover:bg-white hover:text-black transition">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Placeholder Sections -->
+    <section id="about" class="p-8 text-center border-t border-gray-800">
+      <h3 class="text-2xl font-bold mb-2">About</h3>
+      <p class="text-gray-400">This section will introduce who Evelyn is and what this space is about. Coming soon.</p>
+    </section>
+
+    <section id="contact" class="p-8 text-center border-t border-gray-800">
+      <h3 class="text-2xl font-bold mb-2">Contact</h3>
+      <p class="text-gray-400">Contact form or information will be placed here. Stay tuned.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="p-4 text-center text-gray-600 border-t border-gray-800 text-sm">
+      © 2025 Evelyn. All rights reserved.
     </footer>
   </body>
 </html>
-
