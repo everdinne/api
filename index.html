@@ -1,81 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Evelyn's Lab</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-        background-color: #0e0e0e;
-        color: #f2f2f2;
-      }
-      .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.8s ease-out forwards;
-      }
-      @keyframes fadeInUp {
-        0% {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        100% {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    </style>
-  </head>
-  <body class="bg-black text-white">
-    <header class="w-full py-6 px-8 bg-gradient-to-b from-black via-zinc-900 to-black shadow-md">
-      <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <h1 class="text-3xl font-bold tracking-tight fade-in">Evelyn's Lab</h1>
-        <nav class="space-x-6 text-zinc-400 text-sm fade-in">
-          <a href="#projects" class="hover:text-white transition">Projects</a>
-          <a href="#about" class="hover:text-white transition">About</a>
-          <a href="#contact" class="hover:text-white transition">Contact</a>
-        </nav>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evelyn's Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0e0e0e;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: #aaa;
+    }
+
+    section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      color: #666;
+      font-size: 0.875rem;
+      border-top: 1px solid #222;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Evelyn's Lab</h1>
+    <p>Exploring Data, AI, and API ideas</p>
+  </header>
+
+  <section>
+    <h2 class="section-title">Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>AI Update</h3>
+        <p>Experiments and notes from my AI learning journey.</p>
       </div>
-    </header>
-
-    <section class="text-center py-24 px-4 bg-black">
-      <h2 class="text-4xl font-bold fade-in">Welcome to Evelyn's World of Exploration</h2>
-      <p class="mt-4 text-zinc-400 max-w-xl mx-auto fade-in" style="animation-delay: 0.2s">
-        A portfolio of thoughts, data, AI, and the APIs behind the curtain.
-      </p>
-    </section>
-
-    <section id="projects" class="py-20 px-4 bg-zinc-950">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold mb-12 text-center fade-in">Projects</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-zinc-900 p-6 rounded-2xl shadow-lg fade-in">
-            <h3 class="text-xl font-semibold mb-2">AI UPDATE</h3>
-            <p class="text-zinc-400">Latest insights, experiments, and musings on artificial intelligence advancements.</p>
-          </div>
-          <div class="bg-zinc-900 p-6 rounded-2xl shadow-lg fade-in" style="animation-delay: 0.2s">
-            <h3 class="text-xl font-semibold mb-2">DATA SCIENCE</h3>
-            <p class="text-zinc-400">Exploring data, patterns, and the logic that brings stories to numbers.</p>
-          </div>
-          <div class="bg-zinc-900 p-6 rounded-2xl shadow-lg fade-in" style="animation-delay: 0.4s">
-            <h3 class="text-xl font-semibold mb-2">API LOADING</h3>
-            <p class="text-zinc-400">Experiments and hacks with public APIs, automation, and web integration.</p>
-          </div>
-        </div>
+      <div class="project-card">
+        <h3>Data Science</h3>
+        <p>Visualization, statistics, and storytelling with data.</p>
       </div>
-    </section>
-
-    <footer class="bg-black py-10 px-4 border-t border-zinc-800">
-      <div class="max-w-6xl mx-auto text-center text-sm text-zinc-500">
-        © 2025 Evelyn — Crafted with curiosity and humaine.
+      <div class="project-card">
+        <h3>API Loading</h3>
+        <p>Useful public APIs and how to integrate them efficiently.</p>
       </div>
-    </footer>
-  </body>
-</html>
+    </div>
+  </section>
 
-  </body>
+  <footer>
+    <p>&copy; 2025 Evelyn. All rights reserved.</p>
+  </footer>
+</body>
+
 </html>
 
