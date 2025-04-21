@@ -1,0 +1,54 @@
+/* 字體設定 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f9f7f2;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+/* 頁首區域 */
+header {
+  background-color: #2c4d3f;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* 主體內容 */
+main {
+  padding: 3rem 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-in-out;
+}
+
+main.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 頁尾 */
+footer {
+  background-color: #e0e4dc;
+  color: #333;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #ccc;
+}
