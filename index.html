@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
       body {
         font-family: 'Inter', sans-serif;
@@ -17,28 +18,28 @@
       .fade-in {
         opacity: 0;
         transform: translateY(20px);
-        transition: all 0.8s ease-out;
       }
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
+      .logo-font {
+        font-weight: 700;
+        letter-spacing: -0.02em;
       }
     </style>
   </head>
   <body class="relative overflow-x-hidden">
-    <!-- Dynamic Background Layer -->
     <div class="fixed inset-0 -z-10">
       <div class="absolute w-[600px] h-[600px] bg-purple-500/20 blur-[150px] top-[-100px] left-[-150px] rounded-full"></div>
       <div class="absolute w-[400px] h-[400px] bg-blue-400/20 blur-[130px] bottom-[-80px] right-[-120px] rounded-full"></div>
       <div class="absolute w-[300px] h-[300px] bg-fuchsia-400/10 blur-[160px] top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full"></div>
     </div>
 
-    <!-- Header -->
     <header class="w-full px-6 py-5 bg-zinc-950/80 backdrop-blur border-b border-zinc-800 sticky top-0 z-50">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <h1 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-fuchsia-500 via-pink-500 to-blue-400 text-transparent bg-clip-text drop-shadow-[0_0_12px_rgba(255,0,255,0.2)]">
-          Evelyn's Lab
-        </h1>
+        <div class="flex items-center space-x-3">
+          <div class="w-3 h-3 rounded-full bg-gradient-to-br from-fuchsia-500 to-blue-400"></div>
+          <h1 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-fuchsia-500 via-pink-500 to-blue-400 text-transparent bg-clip-text drop-shadow-[0_0_12px_rgba(255,0,255,0.2)] logo-font">
+            Evelyn's Lab
+          </h1>
+        </div>
         <nav class="space-x-6 text-zinc-400 text-sm">
           <a href="#home" class="hover:text-white transition">Home</a>
           <a href="#blog" class="hover:text-white transition">Blog</a>
@@ -49,19 +50,17 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="text-center py-32 px-4 relative bg-transparent">
       <div class="relative z-10 max-w-4xl mx-auto">
         <h2 class="text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-fuchsia-300 to-blue-400 fade-in">
           A Lab for Data, AI, APIs and Thinking
         </h2>
-        <p class="mt-6 text-zinc-400 text-lg fade-in" style="transition-delay: 0.2s">
-          Documenting experiments, learning, and creating a professional platform.
+        <p class="mt-4 text-zinc-400 text-lg fade-in" style="transition-delay: 0.2s">
+          Building thoughtful systems through logic, creativity, and code.
         </p>
       </div>
     </section>
 
-    <!-- Featured Areas -->
     <section id="featured" class="relative py-24 px-6 bg-zinc-950/80 backdrop-blur border-t border-zinc-800">
       <div class="max-w-6xl mx-auto text-center">
         <span class="text-sm uppercase tracking-widest text-fuchsia-400 fade-in">Explore</span>
@@ -83,87 +82,37 @@
       </div>
     </section>
 
-    <!-- Blog Section (Dynamic) -->
-    <section id="blog" class="py-24 px-6 bg-zinc-950 border-t border-zinc-800">
+    <section id="projects" class="relative py-24 px-6 bg-zinc-950 border-t border-zinc-800 text-center">
       <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-          <span class="text-sm uppercase tracking-widest text-blue-400 fade-in">Blog</span>
-          <h2 class="text-3xl font-bold tracking-tight mt-2 fade-in text-white">Latest Writings</h2>
+        <span class="text-sm uppercase tracking-widest text-blue-400 fade-in">Projects</span>
+        <h2 class="text-3xl font-bold tracking-tight mt-2 fade-in text-white">Selected Work</h2>
+        <div class="mt-12 grid md:grid-cols-3 gap-10">
+          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all fade-in">
+            <h3 class="text-xl font-semibold text-white mb-2">Philosophy Visualized</h3>
+            <p class="text-zinc-400">Turning abstract ideas into visual narratives using AI & data viz.</p>
+          </div>
+          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all fade-in">
+            <h3 class="text-xl font-semibold text-white mb-2">API Explorer Toolkit</h3>
+            <p class="text-zinc-400">A toolset for API discovery, probing, and hacking experiments.</p>
+          </div>
+          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all fade-in">
+            <h3 class="text-xl font-semibold text-white mb-2">Data Sketchbook</h3>
+            <p class="text-zinc-400">A creative space to document messy ideas and raw plots.</p>
+          </div>
         </div>
-        <div class="grid md:grid-cols-3 gap-8 blog-grid"></div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6 bg-zinc-950 border-t border-zinc-800 text-center">
-      <h2 class="text-3xl font-bold fade-in">Let’s Connect</h2>
-      <p class="mt-2 text-zinc-400 fade-in">Reach out for collaborations, projects, or conversations.</p>
-      <form class="max-w-xl mx-auto mt-8 fade-in grid gap-4">
-        <input type="text" placeholder="Your name" class="px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500" />
-        <input type="email" placeholder="Your email" class="px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500" />
-        <textarea rows="4" placeholder="Your message" class="px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500"></textarea>
-        <button type="submit" class="bg-fuchsia-500 text-white px-6 py-3 rounded-md hover:bg-fuchsia-600 transition">Send Message</button>
-      </form>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-zinc-950 py-10 px-4 border-t border-zinc-800 text-zinc-500 text-sm text-center">
-      © 2025 Evelyn — Crafted with curiosity and humane.
-    </footer>
-
-    <!-- JS: Scroll Animation + Dynamic Blog -->
+    <!-- JS: Animate on Load -->
     <script>
-      const posts = [
-        {
-          title: "How I Learned to Love APIs",
-          summary: "A journey into the chaos of API integrations.",
-          tag: "Data & APIs",
-          date: "2025-04-01",
-          slug: "love-apis"
-        },
-        {
-          title: "Visualizing My Thoughts with Embeddings",
-          summary: "A beginner's experiment in vector spaces and latent memory.",
-          tag: "AI",
-          date: "2025-03-12",
-          slug: "thought-embeddings"
-        },
-        {
-          title: "Plotting My Inner World with Data",
-          summary: "How philosophy and psychology meet data visualization.",
-          tag: "Data & Philosophy",
-          date: "2025-02-18",
-          slug: "inner-world-data"
-        }
-      ];
-
-      const grid = document.querySelector('.blog-grid');
-      posts.forEach((post, i) => {
-        const card = document.createElement('div');
-        card.className = `bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-md transform transition-all hover:scale-[1.02] fade-in`;
-        card.style.transitionDelay = `${i * 0.2}s`;
-        card.innerHTML = `
-          <h3 class="text-xl font-semibold text-white mb-2">${post.title}</h3>
-          <p class="text-zinc-400">${post.summary}</p>
-          <p class="mt-3 text-sm text-zinc-500">${new Date(post.date).toLocaleDateString()} • ${post.tag}</p>
-        `;
-        card.addEventListener('click', () => {
-          window.location.href = `blog.html?post=${post.slug}`;
+      gsap.utils.toArray('.fade-in').forEach((el, i) => {
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: i * 0.2,
+          ease: 'power3.out'
         });
-        grid.appendChild(card);
-      });
-
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.fade-in').forEach(el => {
-        observer.observe(el);
       });
     </script>
   </body>
