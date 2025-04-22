@@ -6,6 +6,7 @@
     <title>Blog Post - Evelyn's Lab</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
       body {
         font-family: 'Inter', sans-serif;
@@ -54,15 +55,20 @@
           title: "How I Learned to Love APIs",
           date: "2025-04-01",
           tag: "Data & APIs",
-          content: `
-            <p>APIs used to terrify me. I thought of them as magical black boxes...</p>
-            <p>Then one day, I built a bot that checks my mood and finds an API response to match. That was it.</p>
-            <p>Here’s what I learned:</p>
-            <ul>
-              <li>APIs are just conversations between machines</li>
-              <li>Start with curl, then Postman, then fetch()</li>
-              <li>Documentation is the true secret weapon</li>
-            </ul>
+          markdown: `
+# How I Learned to Love APIs
+
+APIs used to terrify me. I thought of them as magical black boxes...
+
+Then one day, I built a bot that checks my mood and finds an API response to match. That was it.
+
+## What I Learned
+
+- APIs are just conversations between machines
+- Start with \\`curl\\`, then Postman, then \\`fetch()\\`
+- Documentation is the true secret weapon
+
+> Never underestimate well-written API docs.
           `
         },
         {
@@ -70,9 +76,20 @@
           title: "Visualizing My Thoughts with Embeddings",
           date: "2025-03-12",
           tag: "AI",
-          content: `
-            <p>Embeddings allow me to make sense of my abstract ideas...</p>
-            <p>Using OpenAI, I tried embedding my journal entries, and it’s wild how they cluster.</p>
+          markdown: `
+# Visualizing My Thoughts with Embeddings
+
+Embeddings allow me to make sense of my abstract ideas.
+
+Using OpenAI, I embedded my journal entries, and it's wild how they cluster together.
+
+### Tools Used
+
+- OpenAI Embedding API
+- UMAP for visualization
+- Simple web frontend with Chart.js
+
+Try it. You’ll see your mind in a new dimension.
           `
         },
         {
@@ -80,9 +97,18 @@
           title: "Plotting My Inner World with Data",
           date: "2025-02-18",
           tag: "Data & Philosophy",
-          content: `
-            <p>I believe data isn’t just numbers—it’s a reflection of thought patterns...</p>
-            <p>This post explores the intersection of analytics, introspection, and mental mapping.</p>
+          markdown: `
+# Plotting My Inner World with Data
+
+I believe data isn’t just numbers—it’s a reflection of thought patterns.
+
+This post explores:
+
+- The intersection of introspection and analytics
+- How journaling and tagging can generate real self-knowledge
+- Why graphs are more than just visuals
+
+\*\*To know yourself, graph yourself.\*\*
           `
         }
       ];
@@ -95,9 +121,10 @@
         document.getElementById("post-title").innerText = post.title;
         document.getElementById("post-date").innerText = new Date(post.date).toLocaleDateString();
         document.getElementById("post-tag").innerText = post.tag;
-        document.getElementById("post-content").innerHTML = post.content;
+        document.getElementById("post-content").innerHTML = marked.parse(post.markdown);
       } else {
         document.getElementById("post-title").innerText = "Post not found";
+        document.getElementById("post-content").innerHTML = "<p class='text-zinc-400'>The article you are looking for does not exist.</p>";
       }
     </script>
   </body>
