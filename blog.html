@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Post - Evelyn's Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0e0e0e;
+        color: #e0e0e0;
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease-out;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class="relative overflow-x-hidden">
+    <header class="w-full px-6 py-5 bg-zinc-950/80 backdrop-blur border-b border-zinc-800 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold tracking-tight bg-gradient-to-r from-fuchsia-500 via-pink-500 to-blue-400 text-transparent bg-clip-text drop-shadow">
+          Evelyn's Lab
+        </a>
+      </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-6 py-24">
+      <article>
+        <div class="mb-4">
+          <span id="post-date" class="text-sm text-zinc-500"></span>
+          <span id="post-tag" class="text-sm text-blue-400 ml-4"></span>
+        </div>
+        <h1 id="post-title" class="text-4xl font-bold text-white mb-6"></h1>
+        <div id="post-content" class="prose prose-invert prose-zinc max-w-none"></div>
+      </article>
+    </main>
+
+    <footer class="bg-zinc-950 py-10 px-4 border-t border-zinc-800 text-zinc-500 text-sm text-center">
+      © 2025 Evelyn — Crafted with curiosity and humane.
+    </footer>
+
+    <script>
+      const posts = [
+        {
+          slug: "love-apis",
+          title: "How I Learned to Love APIs",
+          date: "2025-04-01",
+          tag: "Data & APIs",
+          content: `
+            <p>APIs used to terrify me. I thought of them as magical black boxes...</p>
+            <p>Then one day, I built a bot that checks my mood and finds an API response to match. That was it.</p>
+            <p>Here’s what I learned:</p>
+            <ul>
+              <li>APIs are just conversations between machines</li>
+              <li>Start with curl, then Postman, then fetch()</li>
+              <li>Documentation is the true secret weapon</li>
+            </ul>
+          `
+        },
+        {
+          slug: "thought-embeddings",
+          title: "Visualizing My Thoughts with Embeddings",
+          date: "2025-03-12",
+          tag: "AI",
+          content: `
+            <p>Embeddings allow me to make sense of my abstract ideas...</p>
+            <p>Using OpenAI, I tried embedding my journal entries, and it’s wild how they cluster.</p>
+          `
+        },
+        {
+          slug: "inner-world-data",
+          title: "Plotting My Inner World with Data",
+          date: "2025-02-18",
+          tag: "Data & Philosophy",
+          content: `
+            <p>I believe data isn’t just numbers—it’s a reflection of thought patterns...</p>
+            <p>This post explores the intersection of analytics, introspection, and mental mapping.</p>
+          `
+        }
+      ];
+
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get("post");
+      const post = posts.find(p => p.slug === slug);
+
+      if (post) {
+        document.getElementById("post-title").innerText = post.title;
+        document.getElementById("post-date").innerText = new Date(post.date).toLocaleDateString();
+        document.getElementById("post-tag").innerText = post.tag;
+        document.getElementById("post-content").innerHTML = post.content;
+      } else {
+        document.getElementById("post-title").innerText = "Post not found";
+      }
+    </script>
+  </body>
+</html>
