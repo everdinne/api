@@ -124,15 +124,15 @@
 
 
 
-<section id="projects" class="relative py-24 px-6 bg-zinc-950 border-t border-zinc-800 text-center">
+<section id="projects" class="relative py-24 px-6 bg-white dark:bg-zinc-950 text-center border-t border-zinc-200 dark:border-zinc-800 transition-colors duration-500">
   <div class="max-w-6xl mx-auto">
-    <span class="text-sm uppercase tracking-widest text-blue-400 fade-in">Projects</span>
-    <h2 class="text-3xl font-bold tracking-tight mt-2 fade-in text-white">Selected Work</h2>
+    <span class="text-sm uppercase tracking-widest text-blue-500 dark:text-blue-400 fade-in">Projects</span>
+    <h2 class="text-3xl font-bold tracking-tight mt-2 fade-in text-zinc-900 dark:text-white">Selected Work</h2>
     <div class="mt-12 grid md:grid-cols-3 gap-10">
 
-      <div class="relative bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] fade-in">
-        <h3 class="text-xl font-semibold text-white mb-2">Philosophy Visualized</h3>
-        <p class="text-zinc-400">Turning abstract ideas into visual narratives using AI & data viz.</p>
+      <div class="relative bg-white dark:bg-zinc-900 backdrop-blur-md border border-zinc-200 dark:border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all hover:shadow-xl fade-in">
+        <h3 class="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Philosophy Visualized</h3>
+        <p class="text-zinc-500 dark:text-zinc-400">Turning abstract ideas into visual narratives using AI & data viz.</p>
         <button onclick="openModal('modal1')" class="absolute inset-0 z-10"></button>
       </div>
 
@@ -142,9 +142,9 @@
         <button onclick="closeModal('modal1')" class="mt-4 px-4 py-2 bg-fuchsia-600 text-white rounded hover:bg-fuchsia-700">Close</button>
       </dialog>
 
-      <div class="relative bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] fade-in">
-        <h3 class="text-xl font-semibold text-white mb-2">API Explorer Toolkit</h3>
-        <p class="text-zinc-400">A toolset for API discovery, probing, and hacking experiments.</p>
+      <div class="relative bg-white dark:bg-zinc-900 backdrop-blur-md border border-zinc-200 dark:border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all hover:shadow-xl fade-in">
+        <h3 class="text-xl font-semibold text-zinc-900 dark:text-white mb-2">API Explorer Toolkit</h3>
+        <p class="text-zinc-500 dark:text-zinc-400">A toolset for API discovery, probing, and hacking experiments.</p>
         <button onclick="openModal('modal2')" class="absolute inset-0 z-10"></button>
       </div>
 
@@ -154,9 +154,9 @@
         <button onclick="closeModal('modal2')" class="mt-4 px-4 py-2 bg-fuchsia-600 text-white rounded hover:bg-fuchsia-700">Close</button>
       </dialog>
 
-      <div class="relative bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] fade-in">
-        <h3 class="text-xl font-semibold text-white mb-2">Data Sketchbook</h3>
-        <p class="text-zinc-400">A creative space to document messy ideas and raw plots.</p>
+      <div class="relative bg-white dark:bg-zinc-900 backdrop-blur-md border border-zinc-200 dark:border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all hover:shadow-xl fade-in">
+        <h3 class="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Data Sketchbook</h3>
+        <p class="text-zinc-500 dark:text-zinc-400">A creative space to document messy ideas and raw plots.</p>
         <button onclick="openModal('modal3')" class="absolute inset-0 z-10"></button>
       </div>
 
@@ -169,6 +169,7 @@
     </div>
   </div>
 </section>
+
     
 <script>
 function openModal(id) {
