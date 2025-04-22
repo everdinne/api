@@ -78,6 +78,11 @@
         return { meta, body };
       }
 
+      function formatDate(dateStr) {
+        const d = new Date(dateStr);
+        return isNaN(d) ? 'Unknown date' : d.toLocaleDateString('en-CA'); // YYYY-MM-DD
+      }
+
       if (slug) {
         const rawUrl = `https://raw.githubusercontent.com/everdinne/api/main/posts/${slug}.md`;
         fetch(rawUrl)
@@ -87,7 +92,7 @@
             content.innerHTML = `
               <article class="prose prose-invert max-w-none">
                 <h2 class="text-4xl font-bold text-white mb-4">${meta.title || slug}</h2>
-                <p class="text-sm text-zinc-500 mb-6">${meta.date || "Unknown date"} • ${meta.tag || "Untitled"}</p>
+                <p class="text-sm text-zinc-500 mb-6">${formatDate(meta.date)} • ${meta.tag || "Untitled"}</p>
                 ${marked.parse(body)}
               </article>`;
             Prism.highlightAll();
@@ -125,7 +130,7 @@
               card.innerHTML = `
                 <h3 class="text-xl font-semibold text-white mb-2">${post.title}</h3>
                 <p class="text-zinc-400">Tag: ${post.tag}</p>
-                <p class="mt-3 text-sm text-zinc-500">${post.date}</p>
+                <p class="mt-3 text-sm text-zinc-500">${formatDate(post.date)}</p>
               `;
               card.addEventListener('click', () => {
                 window.location.href = `blog.html?post=${post.slug}`;
