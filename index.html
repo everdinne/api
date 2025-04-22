@@ -66,15 +66,15 @@
         <span class="text-sm uppercase tracking-widest text-fuchsia-400 fade-in">Explore</span>
         <h2 class="text-3xl font-bold tracking-tight mt-2 fade-in text-white">My Core Focus</h2>
         <div class="mt-12 grid md:grid-cols-3 gap-10">
-          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all fade-in">
+          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] fade-in">
             <h3 class="text-xl font-semibold text-white mb-2">Data Science</h3>
             <p class="text-zinc-400">Unveiling patterns and truth from raw data.</p>
           </div>
-          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all fade-in">
+          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] fade-in">
             <h3 class="text-xl font-semibold text-white mb-2">Artificial Intelligence</h3>
             <p class="text-zinc-400">Learning the rules of thought, one model at a time.</p>
           </div>
-          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all fade-in">
+          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] fade-in">
             <h3 class="text-xl font-semibold text-white mb-2">API Haunting</h3>
             <p class="text-zinc-400">Exploring, breaking, and building on the web’s hidden layers.</p>
           </div>
@@ -87,15 +87,15 @@
         <span class="text-sm uppercase tracking-widest text-blue-400 fade-in">Projects</span>
         <h2 class="text-3xl font-bold tracking-tight mt-2 fade-in text-white">Selected Work</h2>
         <div class="mt-12 grid md:grid-cols-3 gap-10">
-          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all fade-in">
+          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] fade-in">
             <h3 class="text-xl font-semibold text-white mb-2">Philosophy Visualized</h3>
             <p class="text-zinc-400">Turning abstract ideas into visual narratives using AI & data viz.</p>
           </div>
-          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all fade-in">
+          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] fade-in">
             <h3 class="text-xl font-semibold text-white mb-2">API Explorer Toolkit</h3>
             <p class="text-zinc-400">A toolset for API discovery, probing, and hacking experiments.</p>
           </div>
-          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all fade-in">
+          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] fade-in">
             <h3 class="text-xl font-semibold text-white mb-2">Data Sketchbook</h3>
             <p class="text-zinc-400">A creative space to document messy ideas and raw plots.</p>
           </div>
@@ -103,18 +103,31 @@
       </div>
     </section>
 
-    <!-- JS: Animate on Load -->
+    <section id="contact" class="py-20 px-6 bg-zinc-950 border-t border-zinc-800 text-center">
+      <h2 class="text-3xl font-bold fade-in">Let’s Connect</h2>
+      <p class="mt-2 text-zinc-400 fade-in">Reach out for collaborations, projects, or conversations.</p>
+      <form class="max-w-xl mx-auto mt-8 fade-in grid gap-4">
+        <input type="text" placeholder="Your name" class="px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500" />
+        <input type="email" placeholder="Your email" class="px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500" />
+        <textarea rows="4" placeholder="Your message" class="px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500"></textarea>
+        <button type="submit" class="bg-fuchsia-500 text-white px-6 py-3 rounded-md hover:bg-fuchsia-600 transition">Send Message</button>
+      </form>
+    </section>
+
+    <footer class="bg-zinc-950 py-10 px-4 border-t border-zinc-800 text-zinc-500 text-sm text-center">
+      © 2025 Evelyn — Crafted with curiosity and humane.
+    </footer>
+
     <script>
       gsap.utils.toArray('.fade-in').forEach((el, i) => {
         gsap.to(el, {
           opacity: 1,
           y: 0,
           duration: 1,
-          delay: i * 0.2,
+          delay: i * 0.15,
           ease: 'power3.out'
         });
       });
     </script>
   </body>
 </html>
-
