@@ -203,47 +203,66 @@
     if (dialog) dialog.close();
   }
 
-  //gallery
+  // gallery scroll 控制 + 自動輪播 + 左右箭頭固定
   const gallery = document.querySelector('#scroll-gallery .overflow-x-auto');
+
   function scrollLeft() {
-    gallery.scrollBy({ left: -300, behavior: 'smooth' });
+    gallery.scrollBy({ left: -400, behavior: 'smooth' });
   }
+
   function scrollRight() {
-    gallery.scrollBy({ left: 300, behavior: 'smooth' });
+    gallery.scrollBy({ left: 400, behavior: 'smooth' });
   }
+
+  // 自動輪播每 4 秒
+  setInterval(scrollRight, 4000);
 </script>
 
+<style>
+  #scroll-gallery .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 1.5rem;
+    transition: background-color 0.3s;
+  }
+  #scroll-gallery .nav-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+  #scroll-gallery .nav-left {
+    left: 1rem;
+  }
+  #scroll-gallery .nav-right {
+    right: 1rem;
+  }
+</style>
 
-   <section id="contact" class="py-20 px-6 bg-white dark:bg-zinc-950 text-center border-t border-zinc-200 dark:border-zinc-800 transition-colors duration-500">
-  <h2 class="text-3xl font-bold fade-in text-zinc-900 dark:text-white">Let’s Connect</h2>
-  <p class="mt-2 text-zinc-600 dark:text-zinc-400 fade-in">Reach out for collaborations, projects, or conversations.</p>
-  <form class="max-w-xl mx-auto mt-8 fade-in grid gap-4">
-    <input
-      type="text"
-      name="name"
-      required
-      placeholder="Your name"
-      class="px-4 py-3 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white border border-zinc-300 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
-    />
-    <input
-      type="email"
-      name="email"
-      required
-      placeholder="Your email"
-      class="px-4 py-3 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white border border-zinc-300 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
-    />
-    <textarea
-      rows="4"
-      name="message"
-      required
-      placeholder="Your message"
-      class="px-4 py-3 bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white border border-zinc-300 dark:border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500"
-    ></textarea>
-    <button type="submit" class="bg-fuchsia-500 text-white px-6 py-3 rounded-md hover:bg-fuchsia-600 transition">
-      Send Message
-    </button>
-  </form>
-   </section>
+<section id="scroll-gallery" class="relative py-32 px-6 bg-white dark:bg-zinc-950 text-center border-t border-zinc-200 dark:border-zinc-800 transition-colors duration-500">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-12 fade-in">Immersive Showcase</h2>
+    <p class="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto mb-12 fade-in">
+      A whimsical scroll of felines because every lab needs a little chaos and charm.
+    </p>
+
+    <div class="relative">
+      <button onclick="scrollLeft()" class="nav-arrow nav-left">←</button>
+      <button onclick="scrollRight()" class="nav-arrow nav-right">→</button>
+
+      <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide px-2">
+        <img loading="lazy" src="images/59l.jpg" alt="Cat swimming in pool" class="w-[400px] h-auto flex-shrink-0 snap-start rounded-xl shadow-md transition-transform duration-500 hover:scale-105" />
+        <img loading="lazy" src="images/68j-2.jpg" alt="Kitten stalking on leaves" class="w-[400px] h-auto flex-shrink-0 snap-start rounded-xl shadow-md transition-transform duration-500 hover:scale-105" />
+        <img loading="lazy" src="images/dm8.jpg" alt="Black cat staring" class="w-[400px] h-auto flex-shrink-0 snap-start rounded-xl shadow-md transition-transform duration-500 hover:scale-105" />
+        <img loading="lazy" src="images/c28.jpg" alt="Two cats hugging" class="w-[400px] h-auto flex-shrink-0 snap-start rounded-xl shadow-md transition-transform duration-500 hover:scale-105" />
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
     <footer class="bg-white dark:bg-zinc-950 py-10 px-4 border-t border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 text-sm text-center transition-colors duration-500">
