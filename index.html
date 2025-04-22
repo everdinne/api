@@ -181,8 +181,8 @@
     if (dialog) dialog.close();
   }
 
-  // gallery scroll 控制 + 自動輪播 + 左右箭頭固定
-  const gallery = document.querySelector('#scroll-gallery .overflow-x-auto');
+  // gallery scroll 控制 + 自動輪播
+  const gallery = document.querySelector('#scroll-gallery .scroll-wrapper');
 
   function scrollLeft() {
     gallery.scrollBy({ left: -400, behavior: 'smooth' });
@@ -192,7 +192,6 @@
     gallery.scrollBy({ left: 400, behavior: 'smooth' });
   }
 
-  // 自動輪播每 4 秒
   setInterval(scrollRight, 4000);
 </script>
 
@@ -213,10 +212,10 @@
     background-color: rgba(255, 255, 255, 0.9);
   }
   #scroll-gallery .nav-left {
-    left: 1rem;
+    left: -1rem;
   }
   #scroll-gallery .nav-right {
-    right: 1rem;
+    right: -1rem;
   }
 </style>
 
@@ -231,7 +230,7 @@
       <button onclick="scrollLeft()" class="nav-arrow nav-left">←</button>
       <button onclick="scrollRight()" class="nav-arrow nav-right">→</button>
 
-      <div class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide px-2">
+      <div class="scroll-wrapper flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide px-2">
         <img loading="lazy" src="images/59l.jpg" alt="Cat swimming in pool" class="w-[400px] h-auto flex-shrink-0 snap-start rounded-xl shadow-md transition-transform duration-500 hover:scale-105" />
         <img loading="lazy" src="images/68j-2.jpg" alt="Kitten stalking on leaves" class="w-[400px] h-auto flex-shrink-0 snap-start rounded-xl shadow-md transition-transform duration-500 hover:scale-105" />
         <img loading="lazy" src="images/dm8.jpg" alt="Black cat staring" class="w-[400px] h-auto flex-shrink-0 snap-start rounded-xl shadow-md transition-transform duration-500 hover:scale-105" />
