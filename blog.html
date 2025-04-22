@@ -1,121 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Post — Evelyn's Lab</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #0e0e0e;
-      color: #e0e0e0;
-    }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    .prose p {
-      margin-bottom: 1em;
-    }
-    .prose pre {
-      background: #1e1e1e;
-      padding: 1em;
-      overflow: auto;
-      border-radius: 0.5em;
-    }
-    .prose code {
-      background: #222;
-      padding: 0.2em 0.4em;
-      border-radius: 0.3em;
-    }
-  </style>
-</head>
-<body class="overflow-x-hidden">
-  <header class="w-full px-6 py-5 bg-zinc-950/80 backdrop-blur border-b border-zinc-800 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-fuchsia-500 via-pink-500 to-blue-400 text-transparent bg-clip-text">
-        Evelyn's Lab
-      </h1>
-      <a href="index.html" class="text-sm text-zinc-400 hover:text-white transition">← Back to Home</a>
-    </div>
-  </header>
-
-  <main class="max-w-3xl mx-auto px-4 py-16">
-    <article class="fade-in">
-      <h2 id="post-title" class="text-4xl font-bold text-white mb-4"></h2>
-      <p id="post-meta" class="text-sm text-zinc-500 mb-6"></p>
-      <div id="post-content" class="prose prose-invert max-w-none"></div>
-    </article>
-  </main>
-
-  <footer class="bg-zinc-950 py-10 px-4 border-t border-zinc-800 text-zinc-500 text-sm text-center">
-    © 2025 Evelyn — Crafted with curiosity and humane.
-  </footer>
-
-  <script>
-    const posts = {
-      "love-apis": {
-        title: "How I Learned to Love APIs",
-        date: "2025-04-01",
-        tag: "Data & APIs",
-        markdown: `### Introduction
-
-I used to be afraid of APIs. Now I chase them down like ghosts...
-
-\`\`\`python
-import requests
-res = requests.get('https://api.example.com/data')
-print(res.json())
-\`\`\`
-
-### Lessons Learned
-- Embrace errors
-- Learn request/response cycles
-- Build tools around endpoints`
-      },
-      "thought-embeddings": {
-        title: "Visualizing My Thoughts with Embeddings",
-        date: "2025-03-12",
-        tag: "AI",
-        markdown: `Embeddings help transform thoughts into vectors. This is how I visualized my own.
-
-**Tools used**:
-- OpenAI API
-- sklearn
-- t-SNE` 
-      },
-      "inner-world-data": {
-        title: "Plotting My Inner World with Data",
-        date: "2025-02-18",
-        tag: "Data & Philosophy",
-        markdown: `This is how I crossed over philosophy and data viz. A crazy journey.`
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evelyn's Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background: #0e0e0e;
+        color: #e0e0e0;
       }
-    };
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .logo-font {
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+    </style>
+  </head>
+  <body class="relative overflow-x-hidden">
+    <div class="fixed inset-0 -z-10">
+      <div class="absolute w-[600px] h-[600px] bg-purple-500/20 blur-[150px] top-[-100px] left-[-150px] rounded-full"></div>
+      <div class="absolute w-[400px] h-[400px] bg-blue-400/20 blur-[130px] bottom-[-80px] right-[-120px] rounded-full"></div>
+      <div class="absolute w-[300px] h-[300px] bg-fuchsia-400/10 blur-[160px] top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full"></div>
+    </div>
 
-    const params = new URLSearchParams(window.location.search);
-    const slug = params.get("post");
-    const post = posts[slug];
+    <header class="w-full px-6 py-5 bg-zinc-950/80 backdrop-blur border-b border-zinc-800 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <div class="w-3 h-3 rounded-full bg-gradient-to-br from-fuchsia-500 to-blue-400"></div>
+          <h1 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-fuchsia-500 via-pink-500 to-blue-400 text-transparent bg-clip-text drop-shadow-[0_0_12px_rgba(255,0,255,0.2)] logo-font">
+            Evelyn's Lab
+          </h1>
+        </div>
+        <nav class="space-x-6 text-zinc-400 text-sm">
+          <a href="#home" class="hover:text-white transition">Home</a>
+          <a href="#blog" class="hover:text-white transition">Blog</a>
+          <a href="#projects" class="hover:text-white transition">Projects</a>
+          <a href="#about" class="hover:text-white transition">About</a>
+          <a href="#contact" class="hover:text-white transition">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-    if (post) {
-      document.getElementById("post-title").textContent = post.title;
-      document.getElementById("post-meta").textContent = new Date(post.date).toLocaleDateString() + " • " + post.tag;
-      document.getElementById("post-content").innerHTML = marked.parse(post.markdown);
-    } else {
-      document.getElementById("post-title").textContent = "Post Not Found";
-      document.getElementById("post-content").innerHTML = "<p>We couldn't find what you're looking for.</p>";
-    }
+    <section id="blog" class="py-24 px-6 bg-zinc-950 border-t border-zinc-800">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-sm uppercase tracking-widest text-blue-400 fade-in">Blog</span>
+          <h2 class="text-3xl font-bold tracking-tight mt-2 fade-in text-white">Latest Writings</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 blog-grid"></div>
+      </div>
+    </section>
 
-    gsap.to('.fade-in', {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      ease: 'power3.out'
-    });
-  </script>
-</body>
+    <footer class="bg-zinc-950 py-10 px-4 border-t border-zinc-800 text-zinc-500 text-sm text-center">
+      © 2025 Evelyn — Crafted with curiosity and humane.
+    </footer>
+
+    <script>
+      const grid = document.querySelector('.blog-grid');
+
+      async function loadPostsFromGitHub() {
+        const res = await fetch('https://api.github.com/repos/everdinne/api/contents/posts');
+        const files = await res.json();
+
+        files.forEach((file, i) => {
+          if (!file.name.endsWith('.md')) return;
+          const slug = file.name.replace('.md', '');
+          const title = slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+          const card = document.createElement('div');
+          card.className = `bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-md transform transition-all hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] fade-in`;
+          card.style.transitionDelay = `${i * 0.2}s`;
+          card.innerHTML = `
+            <h3 class="text-xl font-semibold text-white mb-2">${title}</h3>
+            <p class="text-zinc-400">Read more about this exploration...</p>
+            <p class="mt-3 text-sm text-zinc-500">${file.name}</p>
+          `;
+          card.addEventListener('click', () => {
+            window.location.href = `blog.html?post=${slug}`;
+          });
+          grid.appendChild(card);
+        });
+
+        gsap.utils.toArray('.fade-in').forEach((el, i) => {
+          gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: i * 0.15,
+            ease: 'power3.out'
+          });
+        });
+      }
+
+      loadPostsFromGitHub();
+    </script>
+  </body>
 </html>
-
