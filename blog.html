@@ -10,6 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
       body {
@@ -51,68 +52,77 @@
             Evelyn's Lab
           </h1>
         </div>
-        <nav class="space-x-6 text-zinc-400 text-sm">
-          <a href="#home" class="hover:text-white transition">Home</a>
-          <a href="#blog" class="hover:text-white transition">Blog</a>
-          <a href="#projects" class="hover:text-white transition">Projects</a>
-          <a href="#about" class="hover:text-white transition">About</a>
-          <a href="#contact" class="hover:text-white transition">Contact</a>
-        </nav>
+        <a href="./" class="text-sm text-zinc-400 hover:text-white transition">← Back to Home</a>
       </div>
     </header>
 
-    <section id="blog" class="py-24 px-6 bg-zinc-950 border-t border-zinc-800">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-16">
-          <span class="text-sm uppercase tracking-widest text-blue-400 fade-in">Blog</span>
-          <h2 class="text-3xl font-bold tracking-tight mt-2 fade-in text-white">Latest Writings</h2>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8 blog-grid"></div>
-      </div>
-    </section>
+    <main class="py-24 px-6 bg-zinc-950 border-t border-zinc-800 min-h-[60vh]">
+      <div class="max-w-6xl mx-auto fade-in" id="content"></div>
+    </main>
 
     <footer class="bg-zinc-950 py-10 px-4 border-t border-zinc-800 text-zinc-500 text-sm text-center">
       © 2025 Evelyn — Crafted with curiosity and humane.
     </footer>
 
     <script>
-      const grid = document.querySelector('.blog-grid');
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get("post");
+      const content = document.getElementById("content");
 
-      async function loadPostsFromGitHub() {
-        const res = await fetch('https://api.github.com/repos/everdinne/api/contents/posts');
-        const files = await res.json();
-
-        files.forEach((file, i) => {
-          if (!file.name.endsWith('.md')) return;
-          const slug = file.name.replace('.md', '');
-          const title = slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-
-          const card = document.createElement('div');
-          card.className = `bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-md transform transition-all hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] fade-in`;
-          card.style.transitionDelay = `${i * 0.2}s`;
-          card.innerHTML = `
-            <h3 class="text-xl font-semibold text-white mb-2">${title}</h3>
-            <p class="text-zinc-400">Read more about this exploration...</p>
-            <p class="mt-3 text-sm text-zinc-500">${file.name}</p>
-          `;
-          card.addEventListener('click', () => {
-            window.location.href = `blog.html?post=${slug}`;
+      if (slug) {
+        const rawUrl = `https://raw.githubusercontent.com/everdinne/api/main/posts/${slug}.md`;
+        fetch(rawUrl)
+          .then(res => res.ok ? res.text() : Promise.reject("404"))
+          .then(markdown => {
+            content.innerHTML = `
+              <article class="prose prose-invert max-w-none">
+                <h2 class="text-4xl font-bold text-white mb-4">${slug.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase())}</h2>
+                ${marked.parse(markdown)}
+              </article>`;
+            Prism.highlightAll();
+          })
+          .catch(() => {
+            content.innerHTML = `<h2 class="text-3xl font-bold text-red-500">Post Not Found</h2>`;
           });
-          grid.appendChild(card);
-        });
+      } else {
+        fetch('https://api.github.com/repos/everdinne/api/contents/posts')
+          .then(res => res.json())
+          .then(files => {
+            const grid = document.createElement('div');
+            grid.className = 'grid md:grid-cols-3 gap-8';
 
-        gsap.utils.toArray('.fade-in').forEach((el, i) => {
-          gsap.to(el, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            delay: i * 0.15,
-            ease: 'power3.out'
+            files.forEach((file, i) => {
+              if (!file.name.endsWith('.md')) return;
+              const slug = file.name.replace('.md', '');
+              const title = slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+              const card = document.createElement('div');
+              card.className = `bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-md transform transition-all hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] fade-in`;
+              card.style.transitionDelay = `${i * 0.2}s`;
+              card.innerHTML = `
+                <h3 class="text-xl font-semibold text-white mb-2">${title}</h3>
+                <p class="text-zinc-400">Read more about this exploration...</p>
+                <p class="mt-3 text-sm text-zinc-500">${file.name}</p>
+              `;
+              card.addEventListener('click', () => {
+                window.location.href = `blog.html?post=${slug}`;
+              });
+              grid.appendChild(card);
+            });
+
+            content.appendChild(grid);
+
+            gsap.utils.toArray('.fade-in').forEach((el, i) => {
+              gsap.to(el, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: i * 0.15,
+                ease: 'power3.out'
+              });
+            });
           });
-        });
       }
-
-      loadPostsFromGitHub();
     </script>
   </body>
 </html>
