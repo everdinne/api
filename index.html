@@ -191,8 +191,19 @@
 </section>
 
 <main>
-
+    
 <script>
+  function openModal(id) {
+    const dialog = document.getElementById(id);
+    if (dialog) dialog.showModal();
+  }
+
+  function closeModal(id) {
+    const dialog = document.getElementById(id);
+    if (dialog) dialog.close();
+  }
+
+  //gallery
   const gallery = document.querySelector('#scroll-gallery .flex');
   function scrollLeft() {
     gallery.scrollBy({ left: -300, behavior: 'smooth' });
@@ -202,18 +213,6 @@
   }
 </script>
 
-    
-<script>
-function openModal(id) {
-  const dialog = document.getElementById(id);
-  if (dialog) dialog.showModal();
-}
-
-function closeModal(id) {
-  const dialog = document.getElementById(id);
-  if (dialog) dialog.close();
-}
-</script>
 
    <section id="contact" class="py-20 px-6 bg-white dark:bg-zinc-950 text-center border-t border-zinc-200 dark:border-zinc-800 transition-colors duration-500">
   <h2 class="text-3xl font-bold fade-in text-zinc-900 dark:text-white">Let’s Connect</h2>
