@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evelyn's Lab</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       body {
         font-family: 'Inter', sans-serif;
-        background: linear-gradient(to bottom, #0e0e0e, #1a1a1a);
-        color: #f2f2f2;
+        background: #0e0e0e;
+        color: #e0e0e0;
       }
       .fade-in {
         opacity: 0;
@@ -21,77 +23,84 @@
         opacity: 1;
         transform: translateY(0);
       }
-      .underline-hover {
-        position: relative;
-      }
-      .underline-hover::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -2px;
-        height: 2px;
-        width: 100%;
-        background-color: white;
-        transform: scaleX(0);
-        transform-origin: right;
-        transition: transform 0.3s ease;
-      }
-      .underline-hover:hover::after {
-        transform: scaleX(1);
-        transform-origin: left;
-      }
     </style>
   </head>
-  <body class="bg-black text-white">
-    <header class="w-full py-6 px-8 bg-gradient-to-b from-black via-zinc-900 to-black shadow-md border-b border-zinc-800 relative">
-      <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-fuchsia-500/30 via-blue-400/30 to-transparent blur-sm"></div>
+  <body class="relative overflow-x-hidden">
+    <!-- Dynamic Background Layer -->
+    <div class="fixed inset-0 -z-10">
+      <div class="absolute w-[600px] h-[600px] bg-purple-500/20 blur-[150px] top-[-100px] left-[-150px] rounded-full"></div>
+      <div class="absolute w-[400px] h-[400px] bg-blue-400/20 blur-[130px] bottom-[-80px] right-[-120px] rounded-full"></div>
+      <div class="absolute w-[300px] h-[300px] bg-fuchsia-400/10 blur-[160px] top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="w-full px-6 py-5 bg-zinc-950/80 backdrop-blur border-b border-zinc-800 sticky top-0 z-50">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <h1 class="text-3xl font-bold tracking-tight bg-gradient-to-r from-fuchsia-500 via-pink-500 to-blue-500 text-transparent bg-clip-text drop-shadow-[0_0_12px_rgba(255,0,255,0.3)] fade-in">
+        <h1 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-fuchsia-500 via-pink-500 to-blue-400 text-transparent bg-clip-text drop-shadow-[0_0_12px_rgba(255,0,255,0.2)]">
           Evelyn's Lab
         </h1>
-        <nav class="space-x-6 text-zinc-400 text-sm fade-in">
-          <a href="#projects" class="hover:text-white underline-hover transition">Projects</a>
-          <a href="#about" class="hover:text-white underline-hover transition">About</a>
-          <a href="#contact" class="hover:text-white underline-hover transition">Contact</a>
+        <nav class="space-x-6 text-zinc-400 text-sm">
+          <a href="#home" class="hover:text-white transition">Home</a>
+          <a href="#blog" class="hover:text-white transition">Blog</a>
+          <a href="#projects" class="hover:text-white transition">Projects</a>
+          <a href="#about" class="hover:text-white transition">About</a>
+          <a href="#contact" class="hover:text-white transition">Contact</a>
         </nav>
       </div>
     </header>
 
-    <section class="text-center py-24 px-4 bg-gradient-to-b from-black via-zinc-900 to-zinc-950 border-b border-zinc-800">
-      <h2 class="text-4xl font-bold fade-in tracking-tight leading-snug text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">
-        Welcome to Evelyn's World of Exploration
-      </h2>
-      <p class="mt-4 text-zinc-400 max-w-xl mx-auto fade-in" style="transition-delay: 0.2s">
-        A portfolio of thoughts, data, AI, and the APIs behind the curtain.
-      </p>
+    <!-- Hero Section -->
+    <section id="home" class="text-center py-32 px-4 relative bg-transparent">
+      <div class="relative z-10 max-w-4xl mx-auto">
+        <h2 class="text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-fuchsia-300 to-blue-400 fade-in">
+          A Lab for Data, AI, APIs and Thinking
+        </h2>
+        <p class="mt-6 text-zinc-400 text-lg fade-in" style="transition-delay: 0.2s">
+          Documenting experiments, learning, and creating a professional platform.
+        </p>
+      </div>
     </section>
 
-    <section id="projects" class="py-20 px-4 bg-zinc-950 border-b border-zinc-800">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold mb-12 text-center fade-in tracking-wide text-zinc-200">Projects</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-zinc-900/70 backdrop-blur-xl p-6 rounded-2xl shadow-inner fade-in transform transition hover:scale-105 hover:shadow-2xl border border-zinc-700">
-            <h3 class="text-xl font-semibold mb-2 tracking-tight">AI UPDATE</h3>
-            <p class="text-zinc-400">Latest insights, experiments, and musings on artificial intelligence advancements.</p>
+    <!-- Featured Areas -->
+    <section id="featured" class="relative py-24 px-6 bg-zinc-950/80 backdrop-blur border-t border-zinc-800">
+      <div class="max-w-6xl mx-auto text-center">
+        <span class="text-sm uppercase tracking-widest text-fuchsia-400 fade-in">Explore</span>
+        <h2 class="text-3xl font-bold tracking-tight mt-2 fade-in text-white">My Core Focus</h2>
+        <div class="mt-12 grid md:grid-cols-3 gap-10">
+          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all fade-in">
+            <h3 class="text-xl font-semibold text-white mb-2">Data Science</h3>
+            <p class="text-zinc-400">Unveiling patterns and truth from raw data.</p>
           </div>
-          <div class="bg-zinc-900/70 backdrop-blur-xl p-6 rounded-2xl shadow-inner fade-in transform transition hover:scale-105 hover:shadow-2xl border border-zinc-700" style="transition-delay: 0.2s">
-            <h3 class="text-xl font-semibold mb-2 tracking-tight">DATA SCIENCE</h3>
-            <p class="text-zinc-400">Exploring data, patterns, and the logic that brings stories to numbers.</p>
+          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all fade-in">
+            <h3 class="text-xl font-semibold text-white mb-2">Artificial Intelligence</h3>
+            <p class="text-zinc-400">Learning the rules of thought, one model at a time.</p>
           </div>
-          <div class="bg-zinc-900/70 backdrop-blur-xl p-6 rounded-2xl shadow-inner fade-in transform transition hover:scale-105 hover:shadow-2xl border border-zinc-700" style="transition-delay: 0.4s">
-            <h3 class="text-xl font-semibold mb-2 tracking-tight">API LOADING</h3>
-            <p class="text-zinc-400">Experiments and hacks with public APIs, automation, and web integration.</p>
+          <div class="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all fade-in">
+            <h3 class="text-xl font-semibold text-white mb-2">API Haunting</h3>
+            <p class="text-zinc-400">Exploring, breaking, and building on the web’s hidden layers.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="bg-black py-10 px-4 border-t border-zinc-800">
-      <div class="max-w-6xl mx-auto text-center text-sm text-zinc-500">
-        © 2025 Evelyn — Crafted with curiosity and humaine.
-      </div>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-zinc-950 border-t border-zinc-800 text-center">
+      <h2 class="text-3xl font-bold fade-in">Let’s Connect</h2>
+      <p class="mt-2 text-zinc-400 fade-in">Reach out for collaborations, projects, or conversations.</p>
+      <form class="max-w-xl mx-auto mt-8 fade-in grid gap-4">
+        <input type="text" placeholder="Your name" class="px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500" />
+        <input type="email" placeholder="Your email" class="px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500" />
+        <textarea rows="4" placeholder="Your message" class="px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-md focus:outline-none focus:ring-2 focus:ring-fuchsia-500"></textarea>
+        <button type="submit" class="bg-fuchsia-500 text-white px-6 py-3 rounded-md hover:bg-fuchsia-600 transition">Send Message</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-950 py-10 px-4 border-t border-zinc-800 text-zinc-500 text-sm text-center">
+      © 2025 Evelyn — Crafted with curiosity and humane.
     </footer>
 
+    <!-- Animation Script -->
     <script>
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
