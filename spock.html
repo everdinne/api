@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="transition-colors duration-300 scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPOCK – Everdinne's Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class'
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .terminal-output {
+        background-color: #0f0f0f;
+        color: #66ff88;
+        font-family: monospace;
+        font-size: 0.95rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        min-height: 150px;
+      }
+    </style>
+  </head>
+  <body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
+
+    <header class="w-full px-6 py-5 bg-white/90 dark:bg-zinc-900/80 backdrop-blur border-b border-zinc-200 dark:border-zinc-800 flex justify-between items-center">
+      <h1 class="text-xl font-bold tracking-tight">🧪 SPOCK</h1>
+      <a href="index.html" class="text-sm px-4 py-2 rounded bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 transition">← Back to Lab</a>
+    </header>
+
+    <main class="px-6 py-16 max-w-5xl mx-auto space-y-20">
+      <!-- Notes -->
+      <section>
+        <h2 class="text-3xl font-bold mb-6">SPOCK Notes</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow hover:shadow-lg transition">
+            <h3 class="font-semibold text-lg mb-2">On API Fragility</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">Every API is a fragile promise. Never trust without retry logic.</p>
+          </div>
+          <div class="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow hover:shadow-lg transition">
+            <h3 class="font-semibold text-lg mb-2">Data ≠ Truth</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">Data is not neutral. It is shaped by context, bias, and intent.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Playground -->
+      <section>
+        <h2 class="text-3xl font-bold mb-6">Playground</h2>
+        <p class="mb-4 text-zinc-600 dark:text-zinc-400">Click to trigger animation experiment:</p>
+        <button onclick="animateBox()" class="px-6 py-2 bg-fuchsia-600 text-white rounded hover:bg-fuchsia-700 transition">Animate!</button>
+        <div id="box" class="mt-6 w-24 h-24 bg-blue-400 rounded-md"></div>
+      </section>
+
+      <!-- CLI -->
+      <section>
+        <h2 class="text-3xl font-bold mb-6">CLI Terminal (Mock)</h2>
+        <input id="cliInput" type="text" placeholder="spock run model" class="w-full px-4 py-2 mb-4 border border-zinc-300 dark:border-zinc-700 rounded bg-zinc-100 dark:bg-zinc-800 text-sm">
+        <div id="cliOutput" class="terminal-output">
+          > Waiting for command...
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+      function animateBox() {
+        gsap.fromTo("#box", 
+          { x: 0, scale: 1 }, 
+          { x: 300, scale: 1.5, duration: 1, ease: "power2.out", yoyo: true, repeat: 1 });
+      }
+
+      const cliInput = document.getElementById('cliInput');
+      const cliOutput = document.getElementById('cliOutput');
+      cliInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          const cmd = cliInput.value.trim();
+          cliOutput.innerHTML += `\n> ${cmd}`;
+          if (cmd === 'spock run model') {
+            cliOutput.innerHTML += '\n[✓] Running SPOCK logic module...\n[✓] Completed in 0.42s.';
+          } else {
+            cliOutput.innerHTML += `\n[!] Unknown command: ${cmd}`;
+          }
+          cliInput.value = '';
+          cliOutput.scrollTop = cliOutput.scrollHeight;
+        }
+      });
+    </script>
+  </body>
+</html>
