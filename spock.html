@@ -29,20 +29,45 @@
   <body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
 
     <header class="w-full px-6 py-5 bg-white/90 dark:bg-zinc-900/80 backdrop-blur border-b border-zinc-200 dark:border-zinc-800 flex justify-between items-center">
-      <h1 class="text-xl font-bold tracking-tight">🧪 SPOCK</h1>
-      <a href="index.html" class="text-sm px-4 py-2 rounded bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 transition">← Back to Lab</a>
+      <div class="flex items-center gap-3">
+        <div class="w-4 h-4 rounded-full bg-gradient-to-br from-orange-500 to-fuchsia-500 shadow-md"></div>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight">SPOCK</h1>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400">Structured Processing of Code & Knowledge</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="text-sm px-4 py-2 rounded bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 transition">← Back</a>
+        <button id="themeToggle" class="text-sm px-3 py-2 border rounded-md text-zinc-600 dark:text-white border-zinc-300 dark:border-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition flex items-center gap-2">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
     </header>
-
+<section class="text-center py-32 px-6 bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 relative overflow-hidden">
+  <div class="max-w-3xl mx-auto space-y-6">
+    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-orange-500 via-fuchsia-500 to-blue-500 bg-clip-text text-transparent">
+      SPOCK is the heart of Everdinne.
+    </h1>
+    <p class="text-lg text-zinc-600 dark:text-zinc-400 italic">
+      A Sandbox for Systems Thinking — where logic meets play, and code becomes conversation.
+    </p>
+  </div>
+  <!-- 背景柔光圓 -->
+  <div class="absolute top-0 left-0 w-full h-full -z-10 pointer-events-none">
+    <div class="w-[400px] h-[400px] bg-orange-300/10 blur-[120px] rounded-full absolute -top-20 left-1/3 animate-pulse"></div>
+    <div class="w-[400px] h-[400px] bg-fuchsia-400/10 blur-[100px] rounded-full absolute bottom-10 right-1/4 animate-pulse"></div>
+  </div>
+</section>
     <main class="px-6 py-16 max-w-5xl mx-auto space-y-20">
-      <!-- Notes -->
+      <!-- SPOCK Notes -->
       <section>
         <h2 class="text-3xl font-bold mb-6">SPOCK Notes</h2>
         <div class="grid md:grid-cols-2 gap-6">
-          <div class="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow hover:shadow-lg transition">
+          <div class="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow hover:shadow-fuchsia-500/30 hover:scale-105 transition-all">
             <h3 class="font-semibold text-lg mb-2">On API Fragility</h3>
             <p class="text-sm text-zinc-600 dark:text-zinc-400">Every API is a fragile promise. Never trust without retry logic.</p>
           </div>
-          <div class="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow hover:shadow-lg transition">
+          <div class="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow hover:shadow-blue-400/30 hover:scale-105 transition-all">
             <h3 class="font-semibold text-lg mb-2">Data ≠ Truth</h3>
             <p class="text-sm text-zinc-600 dark:text-zinc-400">Data is not neutral. It is shaped by context, bias, and intent.</p>
           </div>
@@ -52,12 +77,12 @@
       <!-- Playground -->
       <section>
         <h2 class="text-3xl font-bold mb-6">Playground</h2>
-        <p class="mb-4 text-zinc-600 dark:text-zinc-400">Click to trigger animation experiment:</p>
-        <button onclick="animateBox()" class="px-6 py-2 bg-fuchsia-600 text-white rounded hover:bg-fuchsia-700 transition">Animate!</button>
+        <p class="mb-4 text-zinc-600 dark:text-zinc-400">Click the box to trigger an experimental animation:</p>
+        <button onclick="animateBox()" class="px-6 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition shadow-md hover:shadow-orange-500/40 hover:scale-105">Animate!</button>
         <div id="box" class="mt-6 w-24 h-24 bg-blue-400 rounded-md"></div>
       </section>
 
-      <!-- CLI -->
+      <!-- CLI Terminal -->
       <section>
         <h2 class="text-3xl font-bold mb-6">CLI Terminal (Mock)</h2>
         <input id="cliInput" type="text" placeholder="spock run model" class="w-full px-4 py-2 mb-4 border border-zinc-300 dark:border-zinc-700 rounded bg-zinc-100 dark:bg-zinc-800 text-sm">
@@ -66,23 +91,29 @@
         </div>
       </section>
     </main>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
+      // Playground box 動畫
       function animateBox() {
-        gsap.fromTo("#box", 
-          { x: 0, scale: 1 }, 
+        gsap.fromTo("#box",
+          { x: 0, scale: 1 },
           { x: 300, scale: 1.5, duration: 1, ease: "power2.out", yoyo: true, repeat: 1 });
       }
 
+      // CLI 模擬輸入行為
       const cliInput = document.getElementById('cliInput');
       const cliOutput = document.getElementById('cliOutput');
+
       cliInput.addEventListener('keydown', e => {
         if (e.key === 'Enter') {
           const cmd = cliInput.value.trim();
           cliOutput.innerHTML += `\n> ${cmd}`;
           if (cmd === 'spock run model') {
             cliOutput.innerHTML += '\n[✓] Running SPOCK logic module...\n[✓] Completed in 0.42s.';
+          } else if (cmd === 'help') {
+            cliOutput.innerHTML += '\nAvailable commands:\n- spock run model\n- help\n- clear';
+          } else if (cmd === 'clear') {
+            cliOutput.innerHTML = '> ';
           } else {
             cliOutput.innerHTML += `\n[!] Unknown command: ${cmd}`;
           }
@@ -90,6 +121,27 @@
           cliOutput.scrollTop = cliOutput.scrollHeight;
         }
       });
+
+      // Theme 切換控制
+      const root = document.documentElement;
+      const toggleBtn = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+
+      function setTheme(mode) {
+        root.classList.toggle('dark', mode === 'dark');
+        themeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
+        localStorage.setItem('theme', mode);
+      }
+
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+      toggleBtn.addEventListener('click', () => {
+        const newTheme = root.classList.contains('dark') ? 'light' : 'dark';
+        setTheme(newTheme);
+      });
     </script>
   </body>
 </html>
+
