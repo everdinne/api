@@ -1,131 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog Post - Evelyn's Lab</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-        background-color: #0e0e0e;
-        color: #e0e0e0;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post — Evelyn's Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0e0e0e;
+      color: #e0e0e0;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .prose p {
+      margin-bottom: 1em;
+    }
+    .prose pre {
+      background: #1e1e1e;
+      padding: 1em;
+      overflow: auto;
+      border-radius: 0.5em;
+    }
+    .prose code {
+      background: #222;
+      padding: 0.2em 0.4em;
+      border-radius: 0.3em;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+  <header class="w-full px-6 py-5 bg-zinc-950/80 backdrop-blur border-b border-zinc-800 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold tracking-tight bg-gradient-to-r from-fuchsia-500 via-pink-500 to-blue-400 text-transparent bg-clip-text">
+        Evelyn's Lab
+      </h1>
+      <a href="index.html" class="text-sm text-zinc-400 hover:text-white transition">← Back to Home</a>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-16">
+    <article class="fade-in">
+      <h2 id="post-title" class="text-4xl font-bold text-white mb-4"></h2>
+      <p id="post-meta" class="text-sm text-zinc-500 mb-6"></p>
+      <div id="post-content" class="prose prose-invert max-w-none"></div>
+    </article>
+  </main>
+
+  <footer class="bg-zinc-950 py-10 px-4 border-t border-zinc-800 text-zinc-500 text-sm text-center">
+    © 2025 Evelyn — Crafted with curiosity and humane.
+  </footer>
+
+  <script>
+    const posts = {
+      "love-apis": {
+        title: "How I Learned to Love APIs",
+        date: "2025-04-01",
+        tag: "Data & APIs",
+        markdown: `### Introduction
+
+I used to be afraid of APIs. Now I chase them down like ghosts...
+
+\`\`\`python
+import requests
+res = requests.get('https://api.example.com/data')
+print(res.json())
+\`\`\`
+
+### Lessons Learned
+- Embrace errors
+- Learn request/response cycles
+- Build tools around endpoints`
+      },
+      "thought-embeddings": {
+        title: "Visualizing My Thoughts with Embeddings",
+        date: "2025-03-12",
+        tag: "AI",
+        markdown: `Embeddings help transform thoughts into vectors. This is how I visualized my own.
+
+**Tools used**:
+- OpenAI API
+- sklearn
+- t-SNE` 
+      },
+      "inner-world-data": {
+        title: "Plotting My Inner World with Data",
+        date: "2025-02-18",
+        tag: "Data & Philosophy",
+        markdown: `This is how I crossed over philosophy and data viz. A crazy journey.`
       }
-      .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.8s ease-out;
-      }
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    </style>
-  </head>
-  <body class="relative overflow-x-hidden">
-    <header class="w-full px-6 py-5 bg-zinc-950/80 backdrop-blur border-b border-zinc-800 sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="index.html" class="text-2xl font-bold tracking-tight bg-gradient-to-r from-fuchsia-500 via-pink-500 to-blue-400 text-transparent bg-clip-text drop-shadow">
-          Evelyn's Lab
-        </a>
-      </div>
-    </header>
+    };
 
-    <main class="max-w-3xl mx-auto px-6 py-24">
-      <article>
-        <div class="mb-4">
-          <span id="post-date" class="text-sm text-zinc-500"></span>
-          <span id="post-tag" class="text-sm text-blue-400 ml-4"></span>
-        </div>
-        <h1 id="post-title" class="text-4xl font-bold text-white mb-6"></h1>
-        <div id="post-content" class="prose prose-invert prose-zinc max-w-none"></div>
-      </article>
-    </main>
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("post");
+    const post = posts[slug];
 
-    <footer class="bg-zinc-950 py-10 px-4 border-t border-zinc-800 text-zinc-500 text-sm text-center">
-      © 2025 Evelyn — Crafted with curiosity and humane.
-    </footer>
+    if (post) {
+      document.getElementById("post-title").textContent = post.title;
+      document.getElementById("post-meta").textContent = new Date(post.date).toLocaleDateString() + " • " + post.tag;
+      document.getElementById("post-content").innerHTML = marked.parse(post.markdown);
+    } else {
+      document.getElementById("post-title").textContent = "Post Not Found";
+      document.getElementById("post-content").innerHTML = "<p>We couldn't find what you're looking for.</p>";
+    }
 
-    <script>
-      const posts = [
-        {
-          slug: "love-apis",
-          title: "How I Learned to Love APIs",
-          date: "2025-04-01",
-          tag: "Data & APIs",
-          markdown: `
-# How I Learned to Love APIs
-
-APIs used to terrify me. I thought of them as magical black boxes...
-
-Then one day, I built a bot that checks my mood and finds an API response to match. That was it.
-
-## What I Learned
-
-- APIs are just conversations between machines
-- Start with \\`curl\\`, then Postman, then \\`fetch()\\`
-- Documentation is the true secret weapon
-
-> Never underestimate well-written API docs.
-          `
-        },
-        {
-          slug: "thought-embeddings",
-          title: "Visualizing My Thoughts with Embeddings",
-          date: "2025-03-12",
-          tag: "AI",
-          markdown: `
-# Visualizing My Thoughts with Embeddings
-
-Embeddings allow me to make sense of my abstract ideas.
-
-Using OpenAI, I embedded my journal entries, and it's wild how they cluster together.
-
-### Tools Used
-
-- OpenAI Embedding API
-- UMAP for visualization
-- Simple web frontend with Chart.js
-
-Try it. You’ll see your mind in a new dimension.
-          `
-        },
-        {
-          slug: "inner-world-data",
-          title: "Plotting My Inner World with Data",
-          date: "2025-02-18",
-          tag: "Data & Philosophy",
-          markdown: `
-# Plotting My Inner World with Data
-
-I believe data isn’t just numbers—it’s a reflection of thought patterns.
-
-This post explores:
-
-- The intersection of introspection and analytics
-- How journaling and tagging can generate real self-knowledge
-- Why graphs are more than just visuals
-
-\*\*To know yourself, graph yourself.\*\*
-          `
-        }
-      ];
-
-      const params = new URLSearchParams(window.location.search);
-      const slug = params.get("post");
-      const post = posts.find(p => p.slug === slug);
-
-      if (post) {
-        document.getElementById("post-title").innerText = post.title;
-        document.getElementById("post-date").innerText = new Date(post.date).toLocaleDateString();
-        document.getElementById("post-tag").innerText = post.tag;
-        document.getElementById("post-content").innerHTML = marked.parse(post.markdown);
-      } else {
-        document.getElementById("post-title").innerText = "Post not found";
-        document.getElementById("post-content").innerHTML = "<p class='text-zinc-400'>The article you are looking for does not exist.</p>";
-      }
-    </script>
-  </body>
+    gsap.to('.fade-in', {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: 'power3.out'
+    });
+  </script>
+</body>
 </html>
+
