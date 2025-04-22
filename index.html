@@ -40,7 +40,7 @@
     </style>
   </head>
   <body class="relative overflow-x-hidden bg-white text-zinc-800 dark:bg-[#0e0e0e] dark:text-zinc-100 transition-colors duration-300">
-    <div class="fixed inset-0 -z-10">
+    <div class="fixed inset-0 -z-10 pointer-events-none">
       <div class="absolute w-[800px] h-[800px] bg-purple-500/10 blur-[200px] top-[-150px] left-[-200px] rounded-full dark:block hidden"></div>
       <div class="absolute w-[600px] h-[600px] bg-blue-400/10 blur-[160px] bottom-[-100px] right-[-160px] rounded-full dark:block hidden"></div>
       <div class="absolute w-[500px] h-[500px] bg-fuchsia-400/10 blur-[200px] top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full dark:block hidden"></div>
@@ -63,9 +63,8 @@
             <a href="#contact" class="hover:text-black dark:hover:text-white transition">Contact</a>
           </nav>
           <button id="themeToggle" class="text-sm px-3 py-2 border rounded-md text-zinc-600 dark:text-white border-zinc-300 dark:border-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition flex items-center gap-2">
-  <span id="themeIcon">🌙</span> Theme
-</button>
-
+            <span id="themeIcon">🌙</span> Theme
+          </button>
         </div>
       </div>
     </header>
@@ -196,43 +195,61 @@ function closeModal(id) {
       © 2025 Evelyn — Crafted with curiosity and humane.
     </footer>
 
-   <script>
-  // Fade-in animation
-  gsap.utils.toArray('.fade-in').forEach((el, i) => {
-    gsap.to(el, {
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      delay: i * 0.15,
-      ease: 'power3.out'
-    });
-  });
+    <script>
+      // GSAP fade-in once
+      gsap.utils.toArray('.fade-in').forEach((el, i) => {
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          delay: i * 0.15,
+          ease: 'power3.out'
+        });
+      });
 
-  // Theme toggle with icon + localStorage
-  const root = document.documentElement;
-  const toggleBtn = document.getElementById('themeToggle');
-  const themeIcon = document.getElementById('themeIcon');
+      // Theme toggle with localStorage
+      const root = document.documentElement;
+      const toggleBtn = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
 
-  function setTheme(mode) {
-    root.classList.toggle('dark', mode === 'dark');
-    themeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
-    localStorage.setItem('theme', mode);
-  }
+      function setTheme(mode) {
+        root.classList.toggle('dark', mode === 'dark');
+        themeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
+        localStorage.setItem('theme', mode);
+      }
 
-  const savedTheme = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (savedTheme) {
-    setTheme(savedTheme);
-  } else {
-    setTheme(prefersDark ? 'dark' : 'light');
-  }
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme) {
+        setTheme(savedTheme);
+      } else {
+        setTheme(prefersDark ? 'dark' : 'light');
+      }
 
-  toggleBtn.addEventListener('click', () => {
-    const newTheme = root.classList.contains('dark') ? 'light' : 'dark';
-    setTheme(newTheme);
-  });
-</script>
+      toggleBtn.addEventListener('click', () => {
+        const newTheme = root.classList.contains('dark') ? 'light' : 'dark';
+        setTheme(newTheme);
+      });
 
+      // Modal logic with escape and background click close
+      document.querySelectorAll('dialog').forEach(dialog => {
+        dialog.addEventListener('click', e => {
+          const rect = dialog.getBoundingClientRect();
+          if (
+            e.clientX < rect.left ||
+            e.clientX > rect.right ||
+            e.clientY < rect.top ||
+            e.clientY > rect.bottom
+          ) {
+            dialog.close();
+          }
+        });
+        dialog.addEventListener('keydown', e => {
+          if (e.key === 'Escape') dialog.close();
+        });
+      });
+    </script>
   </body>
 </html>
+
 
