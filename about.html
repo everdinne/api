@@ -153,26 +153,8 @@
     © 2025 Everdinne — Curiously crafted.
   </footer>
 
-  <!-- GSAP Scroll Animation -->
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-
-    window.addEventListener('DOMContentLoaded', () => {
-      gsap.utils.toArray('.fade-in').forEach((el, i) => {
-        gsap.fromTo(el, { opacity: 0, y: 30 }, {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          delay: i * 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-          }
-        });
-      });
-    });
-  </script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="scripts/app.js"></script>
 </body>
 </html>
