@@ -11,6 +11,8 @@
         darkMode: 'class'
       }
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
       body {
         font-family: 'Inter', sans-serif;
@@ -25,14 +27,17 @@
         <div class="w-3 h-3 rounded-full bg-gradient-to-br from-fuchsia-500 to-blue-400"></div>
         <h1 class="text-lg font-bold tracking-tight">Everdinne's Lab</h1>
       </div>
-      <div class="flex gap-4">
+      <div class="flex gap-4 items-center">
         <a href="index.html" class="text-sm px-4 py-2 bg-zinc-200 dark:bg-zinc-700 rounded hover:bg-zinc-300 dark:hover:bg-zinc-600 transition">← Home</a>
         <a href="spock.html" class="text-sm px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition">→ SPOCK</a>
+        <button id="themeToggle" class="ml-2 text-sm px-3 py-2 border rounded-md text-zinc-600 dark:text-white border-zinc-300 dark:border-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+          <span id="themeIcon">🌙</span>
+        </button>
       </div>
     </header>
 
     <!-- Hero -->
-    <section class="text-center py-32 px-6 border-b border-zinc-200 dark:border-zinc-800">
+    <section id="blog-hero" class="text-center py-32 px-6 border-b border-zinc-200 dark:border-zinc-800 fade-in">
       <div class="max-w-3xl mx-auto space-y-4">
         <h2 class="text-5xl font-bold tracking-tight bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 text-transparent bg-clip-text">
           Welcome to the Journal
@@ -46,7 +51,7 @@
     <!-- Blog Posts -->
     <main class="max-w-5xl mx-auto px-6 py-20 space-y-12">
       <!-- Blog Entry -->
-      <article class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow hover:shadow-md transition">
+      <article class="fade-in bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow hover:shadow-lg transition cursor-pointer hover:scale-[1.01] transform duration-300">
         <div class="text-sm text-fuchsia-500 dark:text-fuchsia-400 uppercase tracking-widest mb-2">Week 16</div>
         <h3 class="text-2xl font-semibold mb-2">What Philosophy Taught Me About Debugging</h3>
         <p class="text-zinc-600 dark:text-zinc-400">It’s not just the code that breaks. Sometimes, it’s our assumptions. In this piece, I explore how logical frameworks and thought experiments help me interpret error messages differently...</p>
@@ -54,7 +59,7 @@
       </article>
 
       <!-- Blog Entry -->
-      <article class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow hover:shadow-md transition">
+      <article class="fade-in bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow hover:shadow-lg transition cursor-pointer hover:scale-[1.01] transform duration-300">
         <div class="text-sm text-blue-500 dark:text-blue-400 uppercase tracking-widest mb-2">Reflections</div>
         <h3 class="text-2xl font-semibold mb-2">How I Made Peace with Ambiguity in AI</h3>
         <p class="text-zinc-600 dark:text-zinc-400">The idea of an "exact system" has always haunted me. But perhaps what makes systems humane is their imperfection. This essay dives into ambiguity as a feature, not a bug...</p>
@@ -66,11 +71,50 @@
     <footer class="bg-white dark:bg-zinc-950 py-10 px-4 border-t border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 text-sm text-center transition-colors duration-500">
       © 2025 Evelyn — Crafted with curiosity and humane.
     </footer>
+<script>
+  // GSAP Entrance Effects
+  gsap.registerPlugin(ScrollTrigger);
 
-    <script>
-      // Optional: Theme toggling if you want to reuse from other pages
-    </script>
+  // Fade-in elements
+  gsap.utils.toArray('.fade-in').forEach((el, i) => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: i * 0.1,
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      }
+    );
+  });
 
-  </body>
+  // Theme toggle
+  const root = document.documentElement;
+  const toggleBtn = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+
+  function setTheme(mode) {
+    root.classList.toggle('dark', mode === 'dark');
+    themeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
+    localStorage.setItem('theme', mode);
+  }
+
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+  toggleBtn.addEventListener('click', () => {
+    const newTheme = root.classList.contains('dark') ? 'light' : 'dark';
+    document.body.classList.add('transition-colors');
+    setTheme(newTheme);
+  });
+</script>
+</body>
 </html>
+
 
