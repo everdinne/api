@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About – Everdinne's Lab</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles/effects.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -13,23 +12,15 @@
       darkMode: 'class'
     }
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <style>
     body {
       font-family: 'Inter', sans-serif;
     }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-    }
   </style>
 </head>
-
 <body class="bg-white dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100 transition-colors duration-300">
 
-
- <!-- ✅ Header（統一版） -->
+  <!-- Header 統一版 -->
   <header class="w-full px-6 py-5 bg-white/80 dark:bg-zinc-900/80 backdrop-blur border-b border-zinc-200 dark:border-zinc-800 sticky top-0 z-50 transition-colors duration-500">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-3">
@@ -56,45 +47,41 @@
       </button>
     </div>
   </header>
-  <!-- 以下是內容區塊 -->
+
   <!-- Hero 區 -->
-  <section class="relative py-32 px-6 text-center bg-white dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100 border-b border-zinc-200 dark:border-zinc-800 overflow-hidden">
+  <section class="relative py-32 px-6 text-center bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 overflow-hidden">
     <div class="absolute -z-10 w-full h-full top-0 left-0">
       <div class="w-[400px] h-[400px] bg-fuchsia-300/10 blur-[120px] rounded-full absolute -top-20 left-1/3 animate-pulse"></div>
       <div class="w-[400px] h-[400px] bg-blue-300/10 blur-[100px] rounded-full absolute bottom-10 right-1/4 animate-pulse"></div>
     </div>
-    <h1 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-fuchsia-500 to-blue-400 bg-clip-text text-transparent tracking-tight mb-4 fade-in">
-      About Everdinne's Lab
-    </h1>
-    <p class="text-lg text-zinc-600 dark:text-zinc-400 fade-in">Where ideas meet implementation</p>
+    <h1 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-fuchsia-500 to-blue-400 bg-clip-text text-transparent tracking-tight mb-4">About Everdinne's Lab</h1>
+    <p class="text-lg text-zinc-600 dark:text-zinc-400">Where ideas meet implementation</p>
   </section>
 
-  <!-- Everdinne 區 -->
+  <!-- About Me -->
   <section class="py-24 px-6 text-center bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
-    <h2 class="text-3xl font-bold tracking-tight mb-4 text-zinc-900 dark:text-white fade-in">About Me</h2>
-    <img src="images/207711730.jpg" alt="Profile" class="w-28 h-28 mx-auto mb-6 rounded-full border-4 border-fuchsia-500 shadow-lg fade-in" />
-    <p class="max-w-xl mx-auto text-zinc-600 dark:text-zinc-400 fade-in">
+    <h2 class="text-3xl font-bold tracking-tight mb-4 text-zinc-900 dark:text-white">About Me</h2>
+    <img src="images/207711730.jpg" alt="Profile" class="w-28 h-28 mx-auto mb-6 rounded-full border-4 border-fuchsia-500 shadow-lg" />
+    <p class="max-w-xl mx-auto text-zinc-600 dark:text-zinc-400">
       I'm Everdinne, a data tinkerer, AI experimenter, and digital systems explorer. This lab is my thinking playground—where curiosity turns into code.
     </p>
-    <div class="mt-4 flex justify-center gap-3 fade-in">
+    <div class="mt-4 flex justify-center gap-3">
       <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm text-zinc-600 dark:text-zinc-300">Data Thinker</span>
       <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm text-zinc-600 dark:text-zinc-300">AI Tinkerer</span>
       <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm text-zinc-600 dark:text-zinc-300">API Wanderer</span>
     </div>
-    <div class="mt-6 flex justify-center gap-4 text-zinc-600 dark:text-zinc-400 fade-in">
+    <div class="mt-6 flex justify-center gap-4 text-zinc-600 dark:text-zinc-400">
       <a href="https://github.com/" target="_blank" class="hover:underline">GitHub</a>
       <a href="mailto:you@example.com" class="hover:underline">Email</a>
     </div>
   </section>
 
-  <!-- Lab 區 -->
+  <!-- Lab Info -->
   <section class="py-24 px-6 bg-zinc-50 dark:bg-zinc-900 text-center border-b border-zinc-200 dark:border-zinc-800">
-    <h2 class="text-3xl font-bold tracking-tight mb-4 text-zinc-900 dark:text-white fade-in">About the Lab</h2>
-    <p class="max-w-2xl mx-auto text-zinc-600 dark:text-zinc-400 fade-in">
-      Everdinne's Lab is a digital lab for strange data stories, creative logic systems, and visualized philosophy. It's where experimentation thrives.
-    </p>
-    <div class="mt-8 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto fade-in">
-      <div class="p-6 bg-white dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700 text-left shadow">
+    <h2 class="text-3xl font-bold tracking-tight mb-4 text-zinc-900 dark:text-white">About the Lab</h2>
+    <p class="max-w-2xl mx-auto text-zinc-600 dark:text-zinc-400">Everdinne's Lab is a digital lab for strange data stories, creative logic systems, and visualized philosophy. It's where experimentation thrives.</p>
+    <div class="mt-8 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <div class="p-6 bg-white dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700 text-left shadow card-hover">
         <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Key Features</h3>
         <ul class="text-zinc-600 dark:text-zinc-400 list-disc list-inside space-y-1">
           <li>Dark mode support</li>
@@ -103,47 +90,34 @@
           <li>Open to weirdness</li>
         </ul>
       </div>
-      <div class="p-6 bg-white dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700 text-left shadow">
+      <div class="p-6 bg-white dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700 text-left shadow card-hover">
         <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Mission</h3>
-        <p>
-          To create, test, and share unconventional ideas in an open-ended way—across AI, data, design, and thought.
-        </p>
+        <p>To create, test, and share unconventional ideas in an open-ended way—across AI, data, design, and thought.</p>
       </div>
     </div>
   </section>
 
-  <!-- Core Values 區 -->
+  <!-- Core Values -->
   <section class="py-24 px-6 bg-white dark:bg-zinc-950 text-center border-b border-zinc-200 dark:border-zinc-800">
-    <h2 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white fade-in">Core Values</h2>
-    <div class="mt-10 grid md:grid-cols-3 gap-8 max-w-5xl mx-auto fade-in">
-      <div class="p-6 bg-zinc-100 dark:bg-zinc-800 rounded-xl shadow">
+    <h2 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">Core Values</h2>
+    <div class="mt-10 grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div class="p-6 bg-zinc-100 dark:bg-zinc-800 rounded-xl shadow card-hover">
         <h4 class="font-semibold text-lg mb-2 text-fuchsia-500">Curiosity</h4>
         <p class="text-zinc-600 dark:text-zinc-300">The urge to dig deeper and ask better questions.</p>
       </div>
-      <div class="p-6 bg-zinc-100 dark:bg-zinc-800 rounded-xl shadow">
+      <div class="p-6 bg-zinc-100 dark:bg-zinc-800 rounded-xl shadow card-hover">
         <h4 class="font-semibold text-lg mb-2 text-blue-500">Clarity</h4>
         <p class="text-zinc-600 dark:text-zinc-300">Making complex ideas simple, elegant, and accessible.</p>
       </div>
-      <div class="p-6 bg-zinc-100 dark:bg-zinc-800 rounded-xl shadow">
+      <div class="p-6 bg-zinc-100 dark:bg-zinc-800 rounded-xl shadow card-hover">
         <h4 class="font-semibold text-lg mb-2 text-green-500">Weirdness</h4>
         <p class="text-zinc-600 dark:text-zinc-300">Allowing strange ideas to breathe and surprise.</p>
       </div>
     </div>
   </section>
 
-  <!-- SPOCK 區 -->
-  <section class="py-24 px-6 text-center bg-zinc-50 dark:bg-zinc-900">
-    <h2 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white mb-4 fade-in">SPOCK Sub-Lab</h2>
-    <p class="max-w-2xl mx-auto text-zinc-600 dark:text-zinc-400 fade-in">
-      SPOCK is a systems lab within the lab—focused on CLI simulations, modular logic, and AI as interface.
-    </p>
-    <a href="spock.html" class="mt-6 inline-block px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-white transition shadow-md shadow-orange-400/20 fade-in">
-      → Enter SPOCK
-    </a>
-  </section>
-
   <!-- CTA -->
-  <section class="text-center py-20 px-6 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 fade-in">
+  <section class="text-center py-20 px-6 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
     <p class="text-zinc-600 dark:text-zinc-400 mb-4">Back to where it all begins.</p>
     <a href="index.html" class="px-6 py-3 rounded-full bg-fuchsia-600 text-white hover:bg-fuchsia-700 transition shadow-md">← Return Home</a>
   </section>
@@ -153,8 +127,9 @@
     © 2025 Everdinne — Curiously crafted.
   </footer>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="scripts/app.js"></script>
 </body>
 </html>
+
