@@ -1,11 +1,17 @@
 /* styles/effects.css */
 
-/* 暈光與浮起卡片效果 */
 .card-hover {
-  @apply transition-all duration-300 transform hover:scale-105 shadow hover:shadow-xl;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 }
 
-/* 自定 hover glow（可套用至 img 或 div） */
+.card-hover:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 28px rgba(128, 128, 255, 0.15), 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* 通用圖片光暈效果 */
 .hover-glow {
   transition: box-shadow 0.3s ease;
 }
