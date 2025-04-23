@@ -69,7 +69,7 @@
 
 <main>
  <section id="home" class="relative text-center py-48 px-6 overflow-hidden bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 transition-colors duration-500">
-  <div class="relative z-10 max-w-4xl mx-auto space-y-8">
+ <div id="hero-content" class="relative z-10 max-w-4xl mx-auto space-y-8">
     <h1 class="text-6xl md:text-7xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-fuchsia-300 to-blue-400 fade-in">
       Everdinne's Lab
     </h1>
@@ -310,28 +310,23 @@
       © 2025 Evelyn — Crafted with curiosity and humane.
     </footer>
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  // Hero 區域淡入動畫
-  gsap.utils.toArray("#home .fade-in").forEach((el, i) => {
-    gsap.fromTo(el,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        delay: i * 0.2,
-        ease: 'power3.out'
-      }
-    );
+  // Hero Section Entrance (more elegant & staggered)
+  gsap.from("#hero-content > *", {
+    opacity: 0,
+    y: 40,
+    duration: 1.2,
+    ease: "power3.out",
+    stagger: 0.2,
+    delay: 0.3
   });
-</script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script>
-  // GSAP fade-in once
+  // General fade-in effects
   gsap.utils.toArray('.fade-in').forEach((el, i) => {
     gsap.to(el, {
       opacity: 1,
@@ -342,26 +337,25 @@
     });
   });
 
-  // Scroll-triggered animation for #scroll-gallery
- gsap.utils.toArray('#visuals .fade-in').forEach((el, i) => {
-  gsap.fromTo(el, 
-    { opacity: 0, y: 30 },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      delay: i * 0.1,
-      scrollTrigger: {
-        trigger: el,
-        start: "top 85%",
-        toggleActions: "play none none none"
+  // Visuals section fade-in on scroll
+  gsap.utils.toArray('#visuals .fade-in').forEach((el, i) => {
+    gsap.fromTo(el, 
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: i * 0.1,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          toggleActions: "play none none none"
+        }
       }
-    }
-  );
-});
+    );
+  });
 
-
-  // Theme toggle with localStorage and animated transition
+  // Theme Toggle with localStorage
   const root = document.documentElement;
   const toggleBtn = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');
@@ -374,11 +368,7 @@
 
   const savedTheme = localStorage.getItem('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (savedTheme) {
-    setTheme(savedTheme);
-  } else {
-    setTheme(prefersDark ? 'dark' : 'light');
-  }
+  setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
 
   toggleBtn.addEventListener('click', () => {
     const newTheme = root.classList.contains('dark') ? 'light' : 'dark';
@@ -386,24 +376,21 @@
     setTheme(newTheme);
   });
 
-  // Modal logic with escape and background click close
+  // Modal open/close logic
   document.querySelectorAll('dialog').forEach(dialog => {
     dialog.addEventListener('click', e => {
       const rect = dialog.getBoundingClientRect();
       if (
-        e.clientX < rect.left ||
-        e.clientX > rect.right ||
-        e.clientY < rect.top ||
-        e.clientY > rect.bottom
-      ) {
-        dialog.close();
-      }
+        e.clientX < rect.left || e.clientX > rect.right ||
+        e.clientY < rect.top || e.clientY > rect.bottom
+      ) dialog.close();
     });
     dialog.addEventListener('keydown', e => {
       if (e.key === 'Escape') dialog.close();
     });
   });
 </script>
+
 
   </body>
 </html>
