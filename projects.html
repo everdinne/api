@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth transition-colors duration-300" id="htmlRoot">
-<html lang="en" class="scroll-smooth transition-colors duration-300 transition-none">
+<html lang="en" class="scroll-smooth transition-colors duration-300">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,9 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-      darkMode: 'class'
-    }
+    tailwind.config = { darkMode: 'class' };
   </script>
   <style>
     body {
@@ -28,195 +25,120 @@
   </style>
 </head>
 <body class="bg-white dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100 transition-colors duration-300">
-<header class="w-full px-6 py-5 bg-white/80 dark:bg-zinc-900/80 backdrop-blur border-b border-zinc-200 dark:border-zinc-800 sticky top-0 z-50 flex justify-between items-center">
-  <div class="flex items-center gap-3">
-    <div class="w-3 h-3 rounded-full bg-gradient-to-br from-fuchsia-500 to-blue-400"></div>
-    <h1 class="text-lg font-bold tracking-tight">E.Lab</h1>
-  </div>
-  <div class="flex items-center gap-4">
-    <nav class="space-x-4 text-sm">
-      <a href="index.html" class="hover:underline">← Home</a>
-      <a href="spock.html" class="hover:underline">SPOCK →</a>
-    </nav>
-    <button id="themeToggle" class="text-sm px-3 py-2 border rounded-md border-zinc-300 dark:border-zinc-600 text-zinc-600 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
-  <span id="themeIcon">🌙</span> Theme
-</button>
 
-  </div>
-</header>
-
-<section class="text-center py-24 px-6 border-b border-zinc-200 dark:border-zinc-800">
-  <div class="max-w-3xl mx-auto space-y-4">
-    <h2 class="text-5xl font-bold bg-gradient-to-r from-fuchsia-500 to-blue-400 text-transparent bg-clip-text tracking-tight">
-      Project Gallery
-    </h2>
-    <p class="text-zinc-600 dark:text-zinc-400 text-lg italic">
-      Every project is a fusion of logic and imagination.
-    </p>
-
-    <!-- Filter Tags -->
-    <div class="flex flex-wrap justify-center gap-3 pt-6" id="tagFilters">
-      <span class="tag-pill tag-pill-active" data-tag="all">All</span>
-      <span class="tag-pill tag-pill-inactive" data-tag="ai">AI</span>
-      <span class="tag-pill tag-pill-inactive" data-tag="data">Data Art</span>
-      <span class="tag-pill tag-pill-inactive" data-tag="api">APIs</span>
-      <span class="tag-pill tag-pill-inactive" data-tag="philosophy">Philosophy</span>
+  <!-- ✅ Header（統一版） -->
+  <header class="w-full px-6 py-5 bg-white/80 dark:bg-zinc-900/80 backdrop-blur border-b border-zinc-200 dark:border-zinc-800 sticky top-0 z-50 transition-colors duration-500">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div class="w-3 h-3 rounded-full bg-gradient-to-br from-fuchsia-500 to-blue-400"></div>
+        <div class="flex flex-col leading-tight">
+          <span class="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">E.Lab</span>
+          <span class="text-xs text-zinc-500 dark:text-zinc-400 tracking-wider">Projects · Experiments · Systems</span>
+        </div>
+      </div>
+      <button id="menuToggle" class="md:hidden text-zinc-700 dark:text-white text-2xl focus:outline-none">☰</button>
+      <nav id="mainNav" class="hidden md:flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
+        <a href="index.html" class="hover:text-black dark:hover:text-white transition">← Home</a>
+        <a href="spock.html" class="hover:text-black dark:hover:text-white transition">→ SPOCK</a>
+        <button id="themeToggle" class="text-sm px-3 py-2 border rounded-md text-zinc-600 dark:text-white border-zinc-300 dark:border-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition flex items-center gap-2">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </nav>
     </div>
-  </div>
-</section>
+    <div id="mobileMenu" class="md:hidden mt-4 px-4 hidden flex-col gap-2 text-sm text-zinc-700 dark:text-zinc-200">
+      <a href="index.html" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">← Home</a>
+      <a href="spock.html" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">→ SPOCK</a>
+      <button id="mobileThemeToggle" class="w-full text-left py-2 border-b border-zinc-200 dark:border-zinc-700 flex items-center gap-2">
+        <span id="mobileThemeIcon">🌙</span> Toggle Theme
+      </button>
+    </div>
+  </header>
 
+  <!-- Hero -->
+  <section class="text-center py-24 px-6 border-b border-zinc-200 dark:border-zinc-800">
+    <div class="max-w-3xl mx-auto space-y-4">
+      <h2 class="text-5xl font-bold bg-gradient-to-r from-fuchsia-500 to-blue-400 text-transparent bg-clip-text tracking-tight">Project Gallery</h2>
+      <p class="text-zinc-600 dark:text-zinc-400 text-lg italic">Every project is a fusion of logic and imagination.</p>
+      <div class="flex flex-wrap justify-center gap-3 pt-6" id="tagFilters">
+        <span class="tag-pill tag-pill-active" data-tag="all">All</span>
+        <span class="tag-pill tag-pill-inactive" data-tag="ai">AI</span>
+        <span class="tag-pill tag-pill-inactive" data-tag="data">Data Art</span>
+        <span class="tag-pill tag-pill-inactive" data-tag="api">APIs</span>
+        <span class="tag-pill tag-pill-inactive" data-tag="philosophy">Philosophy</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
   <main class="max-w-6xl mx-auto px-6 py-20 space-y-16">
-  <!-- Search bar -->
-  <div class="mb-12">
-    <input type="text" id="searchInput" placeholder="🔍 Search projects..." 
-      class="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 text-sm shadow-sm" />
-  </div>
-
-  <!-- Project cards -->
-  <div id="projectGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in">
-    <!-- Example Card -->
-    <div class="project-card" data-tags="ai philosophy">
-      <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow hover:shadow-fuchsia-500/30 transition">
-        <h3 class="text-xl font-semibold mb-2">Philosophy Visualized</h3>
-        <p class="text-sm text-zinc-600 dark:text-zinc-400">Visual narratives of abstract concepts using AI & data viz.</p>
+    <div class="mb-12">
+      <input type="text" id="searchInput" placeholder="🔍 Search projects..." class="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 text-sm shadow-sm" />
+    </div>
+    <div id="projectGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 fade-in">
+      <!-- Cards（照舊） -->
+      <div class="project-card" data-tags="ai philosophy">
+        <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow hover:shadow-fuchsia-500/30 transition">
+          <h3 class="text-xl font-semibold mb-2">Philosophy Visualized</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">Visual narratives of abstract concepts using AI & data viz.</p>
+        </div>
+      </div>
+      <div class="project-card" data-tags="api">
+        <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow hover:shadow-blue-400/30 transition">
+          <h3 class="text-xl font-semibold mb-2">API Explorer Toolkit</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">A set of tools for probing and experimenting with APIs.</p>
+        </div>
+      </div>
+      <div class="project-card" data-tags="data">
+        <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow hover:shadow-purple-400/30 transition">
+          <h3 class="text-xl font-semibold mb-2">Data Sketchbook</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">Exploratory visualizations and raw thoughts in visual data form.</p>
+        </div>
+      </div>
+      <div class="project-card" data-tags="ai">
+        <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow hover:shadow-green-400/30 transition">
+          <h3 class="text-xl font-semibold mb-2">Model Playground</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">A space to test small models and generate outputs in browser.</p>
+        </div>
+      </div>
+      <div class="project-card" data-tags="philosophy">
+        <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow hover:shadow-pink-400/30 transition">
+          <h3 class="text-xl font-semibold mb-2">Conceptual Machines</h3>
+          <p class="text-sm text-zinc-600 dark:text-zinc-400">Machine-like thinking patterns based on epistemology models.</p>
+        </div>
       </div>
     </div>
+  </main>
 
-    <div class="project-card" data-tags="api">
-      <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow hover:shadow-blue-400/30 transition">
-        <h3 class="text-xl font-semibold mb-2">API Explorer Toolkit</h3>
-        <p class="text-sm text-zinc-600 dark:text-zinc-400">A set of tools for probing and experimenting with APIs.</p>
-      </div>
+  <!-- CTA -->
+  <section class="text-center py-20 px-6 bg-zinc-100 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800 fade-in">
+    <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-zinc-900 dark:text-white">More explorations await.</h2>
+    <p class="text-zinc-600 dark:text-zinc-400 mb-6">Dive into SPOCK Lab for systems experiments or check reflective essays on the Blog.</p>
+    <div class="flex justify-center gap-4">
+      <a href="spock.html" class="px-6 py-3 rounded-full bg-orange-500 text-white hover:bg-orange-600 transition shadow-md">→ Enter SPOCK</a>
+      <a href="blog.html" class="px-6 py-3 rounded-full bg-zinc-800 text-white hover:bg-zinc-700 transition">→ Visit Blog</a>
     </div>
+  </section>
 
-    <div class="project-card" data-tags="data">
-      <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow hover:shadow-purple-400/30 transition">
-        <h3 class="text-xl font-semibold mb-2">Data Sketchbook</h3>
-        <p class="text-sm text-zinc-600 dark:text-zinc-400">Exploratory visualizations and raw thoughts in visual data form.</p>
-      </div>
-    </div>
+  <!-- Footer -->
+  <footer class="bg-white dark:bg-zinc-950 py-10 px-4 border-t border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 text-sm text-center transition-colors duration-500">
+    © 2025 Everdinne — Crafted with logic and longing.
+  </footer>
 
-    <div class="project-card" data-tags="ai">
-      <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow hover:shadow-green-400/30 transition">
-        <h3 class="text-xl font-semibold mb-2">Model Playground</h3>
-        <p class="text-sm text-zinc-600 dark:text-zinc-400">A space to test small models and generate outputs in browser.</p>
-      </div>
-    </div>
-
-    <div class="project-card" data-tags="philosophy">
-      <div class="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow hover:shadow-pink-400/30 transition">
-        <h3 class="text-xl font-semibold mb-2">Conceptual Machines</h3>
-        <p class="text-sm text-zinc-600 dark:text-zinc-400">Machine-like thinking patterns based on epistemology models.</p>
-      </div>
-    </div>
-  </div>
-</main>
-
-  <!-- CTA 導引 -->
-<section class="text-center py-20 px-6 bg-zinc-100 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800 fade-in">
-  <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-4 text-zinc-900 dark:text-white">
-    More explorations await.
-  </h2>
-  <p class="text-zinc-600 dark:text-zinc-400 mb-6">Dive into SPOCK Lab for systems experiments or check reflective essays on the Blog.</p>
-  <div class="flex justify-center gap-4">
-    <a href="spock.html" class="px-6 py-3 rounded-full bg-orange-500 text-white hover:bg-orange-600 transition shadow-md">→ Enter SPOCK</a>
-    <a href="blog.html" class="px-6 py-3 rounded-full bg-zinc-800 text-white hover:bg-zinc-700 transition">→ Visit Blog</a>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="bg-white dark:bg-zinc-950 py-10 px-4 border-t border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 text-sm text-center transition-colors duration-500">
-  © 2025 Everdinne — Crafted with logic and longing.
-</footer>
-
-<!-- JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script>
-  gsap.registerPlugin(ScrollTrigger);
-
-  // fade-in animation
-  gsap.utils.toArray('.fade-in').forEach((el, i) => {
-    gsap.fromTo(el, { opacity: 0, y: 30 }, {
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      delay: i * 0.15,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        toggleActions: 'play none none none'
-      }
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="scripts/app.js"></script>
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const projectCards = document.querySelectorAll('.project-card');
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      projectCards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(query) ? 'block' : 'none';
+      });
     });
-  });
-// Theme toggle
-const root = document.documentElement;
-const themeBtn = document.getElementById('themeToggle');
-const themeIcon = document.getElementById('themeIcon');
-
-function setTheme(mode) {
-  root.classList.toggle('dark', mode === 'dark');
-  localStorage.setItem('theme', mode);
-  if (themeIcon) {
-    themeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
-  }
-}
-  setTimeout(() => {
-  document.documentElement.classList.remove('transition-none');
-}, 100);
-
-
-// 初次載入時依據偏好或上次選擇設定主題
-const savedTheme = localStorage.getItem('theme');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
-
-if (themeBtn) {
-  themeBtn.addEventListener('click', () => {
-    const isDark = root.classList.contains('dark');
-    setTheme(isDark ? 'light' : 'dark');
-  });
-}
-
-  // Modal logic
-  function openModal(id) {
-    const modal = document.getElementById(id);
-    if (modal) modal.showModal();
-  }
-
-  function closeModal(id) {
-    const modal = document.getElementById(id);
-    if (modal) modal.close();
-  }
-
-  document.querySelectorAll('dialog').forEach(dialog => {
-    dialog.addEventListener('click', e => {
-      const rect = dialog.getBoundingClientRect();
-      if (
-        e.clientX < rect.left || e.clientX > rect.right ||
-        e.clientY < rect.top || e.clientY > rect.bottom
-      ) dialog.close();
-    });
-    dialog.addEventListener('keydown', e => {
-      if (e.key === 'Escape') dialog.close();
-    });
-  });
-
-  // Search filter
-  const searchInput = document.getElementById('searchInput');
-  const projectCards = document.querySelectorAll('.project-card');
-
-  searchInput.addEventListener('input', () => {
-    const query = searchInput.value.toLowerCase();
-    projectCards.forEach(card => {
-      const text = card.innerText.toLowerCase();
-      card.style.display = text.includes(query) ? 'block' : 'none';
-    });
-  });
-</script>
-
-
-  
+  </script>
 </body>
 </html>
+
