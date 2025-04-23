@@ -39,7 +39,7 @@
       }
     </style>
     
- <header class="w-full px-6 py-5 bg-white/80 dark:bg-zinc-950/80 backdrop-blur border-b border-zinc-200 dark:border-zinc-800 sticky top-0 z-50 transition-colors duration-500">
+<header class="w-full px-6 py-5 bg-white/80 dark:bg-zinc-950/80 backdrop-blur border-b border-zinc-200 dark:border-zinc-800 sticky top-0 z-50 transition-colors duration-500">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
     <!-- 左邊 Logo 區 -->
     <div class="flex items-center space-x-3">
@@ -50,33 +50,35 @@
       </div>
     </div>
 
-    <!-- 漢堡按鈕（手機版顯示） -->
-    <button id="menuToggle" class="md:hidden text-zinc-700 dark:text-white focus:outline-none text-2xl">
-      ☰
-    </button>
+    <!-- 漢堡按鈕（手機） -->
+    <button id="menuToggle" class="md:hidden text-zinc-700 dark:text-white text-2xl focus:outline-none">☰</button>
 
-    <!-- 導覽列（桌面版） -->
+    <!-- 導覽列（桌面） -->
     <nav id="mainNav" class="hidden md:flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
       <a href="#home" class="hover:text-black dark:hover:text-white transition">Home</a>
       <a href="blog.html" class="hover:text-black dark:hover:text-white transition">Blog</a>
       <a href="projects.html" class="hover:text-black dark:hover:text-white transition">Projects</a>
       <a href="#about" class="hover:text-black dark:hover:text-white transition">About</a>
       <a href="#contact" class="hover:text-black dark:hover:text-white transition">Contact</a>
-      <button id="themeToggle" class="text-sm px-3 py-2 border rounded-md text-zinc-600 dark:text-white border-zinc-300 dark:border-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-300 flex items-center gap-2">
-        <span id="themeIcon">🌙</span> Theme
+      <button id="themeToggle" class="text-sm px-3 py-2 border rounded-md text-zinc-600 dark:text-white border-zinc-300 dark:border-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition flex items-center gap-2">
+        <span id="themeIcon">🌙</span>
       </button>
     </nav>
   </div>
 
-  <!-- 手機導覽列 -->
+  <!-- 手機版導覽列 -->
   <div id="mobileMenu" class="md:hidden mt-4 px-4 hidden flex-col gap-2 text-sm text-zinc-700 dark:text-zinc-200">
     <a href="#home" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">Home</a>
     <a href="blog.html" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">Blog</a>
     <a href="projects.html" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">Projects</a>
     <a href="#about" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">About</a>
     <a href="#contact" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">Contact</a>
+    <button id="mobileThemeToggle" class="w-full text-left py-2 border-b border-zinc-200 dark:border-zinc-700 flex items-center gap-2">
+      <span id="mobileThemeIcon">🌙</span> Toggle Theme
+    </button>
   </div>
 </header>
+
 
 
 
@@ -322,7 +324,7 @@
 <script>
   gsap.registerPlugin(ScrollTrigger);
 
-  // Animate on load - Hero
+  // Animate on load - Hero + .fade-in
   window.addEventListener('DOMContentLoaded', () => {
     gsap.from("#hero-content > *", {
       opacity: 0,
@@ -333,7 +335,6 @@
       delay: 0.3
     });
 
-    // Animate all .fade-in sections
     gsap.utils.toArray('.fade-in').forEach((el, i) => {
       gsap.to(el, {
         scrollTrigger: {
@@ -349,7 +350,7 @@
       });
     });
 
-    // Special fade-glow on CTA buttons
+    // Glow on hover (CTA buttons)
     gsap.utils.toArray('.glow-hover').forEach(btn => {
       btn.addEventListener('mouseenter', () => {
         gsap.to(btn, {
@@ -367,7 +368,7 @@
       });
     });
 
-    // Hover image glow
+    // Glow on hover (images)
     document.querySelectorAll("img.hover-glow").forEach(img => {
       img.style.cursor = "pointer";
       img.addEventListener("mouseenter", () => {
@@ -379,14 +380,17 @@
     });
   });
 
-  // Theme toggle logic
+  // 🌙 主題切換（桌面 + 手機）
   const root = document.documentElement;
-  const toggleBtn = document.getElementById('themeToggle');
-  const themeIcon = document.getElementById('themeIcon');
+  const themeIcon = document.getElementById("themeIcon");
+  const mobileThemeIcon = document.getElementById("mobileThemeIcon");
+  const themeToggle = document.getElementById("themeToggle");
+  const mobileThemeToggle = document.getElementById("mobileThemeToggle");
 
   function setTheme(mode) {
     root.classList.toggle('dark', mode === 'dark');
-    themeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
+    if (themeIcon) themeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
+    if (mobileThemeIcon) mobileThemeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
     localStorage.setItem('theme', mode);
   }
 
@@ -394,13 +398,25 @@
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
 
-  toggleBtn.addEventListener('click', () => {
+  themeToggle?.addEventListener('click', () => {
     const newTheme = root.classList.contains('dark') ? 'light' : 'dark';
     document.body.classList.add('transition-colors');
     setTheme(newTheme);
   });
 
-  // Modal control
+  mobileThemeToggle?.addEventListener('click', () => {
+    const newTheme = root.classList.contains('dark') ? 'light' : 'dark';
+    setTheme(newTheme);
+  });
+
+  // 📱 漢堡選單切換控制
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+  menuToggle?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+  });
+
+  // Modal 控制
   document.querySelectorAll('dialog').forEach(dialog => {
     dialog.addEventListener('click', e => {
       const rect = dialog.getBoundingClientRect();
@@ -414,14 +430,7 @@
     });
   });
 </script>
-  
-<script>
-  // 📱 漢堡選單切換控制
-  document.getElementById("menuToggle").addEventListener("click", () => {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("hidden");
-  });
-</script>
+
 
 
 
