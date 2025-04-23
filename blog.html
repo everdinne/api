@@ -71,49 +71,10 @@
     <footer class="bg-white dark:bg-zinc-950 py-10 px-4 border-t border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 text-sm text-center transition-colors duration-500">
       © 2025 Evelyn — Crafted with curiosity and humane.
     </footer>
-<script>
-  // GSAP Entrance Effects
-  gsap.registerPlugin(ScrollTrigger);
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="scripts/app.js"></script>
 
-  // Fade-in elements
-  gsap.utils.toArray('.fade-in').forEach((el, i) => {
-    gsap.fromTo(el,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: i * 0.1,
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        }
-      }
-    );
-  });
-
-  // Theme toggle
-  const root = document.documentElement;
-  const toggleBtn = document.getElementById('themeToggle');
-  const themeIcon = document.getElementById('themeIcon');
-
-  function setTheme(mode) {
-    root.classList.toggle('dark', mode === 'dark');
-    themeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
-    localStorage.setItem('theme', mode);
-  }
-
-  const savedTheme = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
-
-  toggleBtn.addEventListener('click', () => {
-    const newTheme = root.classList.contains('dark') ? 'light' : 'dark';
-    document.body.classList.add('transition-colors');
-    setTheme(newTheme);
-  });
-</script>
 </body>
 </html>
 
