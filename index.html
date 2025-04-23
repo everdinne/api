@@ -50,21 +50,34 @@
       </div>
     </div>
 
-    <!-- 右邊導覽 + 切換主題 -->
-    <div class="flex items-center gap-4">
-      <nav class="space-x-6 text-zinc-600 dark:text-zinc-400 text-sm">
-        <a href="#home" class="hover:text-black dark:hover:text-white transition">Home</a>
-        <a href="blog.html" class="hover:text-black dark:hover:text-white transition">Blog</a>
-        <a href="projects.html" class="hover:text-black dark:hover:text-white transition">Projects</a>
-        <a href="#about" class="hover:text-black dark:hover:text-white transition">About</a>
-        <a href="#contact" class="hover:text-black dark:hover:text-white transition">Contact</a>
-      </nav>
+    <!-- 漢堡按鈕（手機版顯示） -->
+    <button id="menuToggle" class="md:hidden text-zinc-700 dark:text-white focus:outline-none text-2xl">
+      ☰
+    </button>
+
+    <!-- 導覽列（桌面版） -->
+    <nav id="mainNav" class="hidden md:flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
+      <a href="#home" class="hover:text-black dark:hover:text-white transition">Home</a>
+      <a href="blog.html" class="hover:text-black dark:hover:text-white transition">Blog</a>
+      <a href="projects.html" class="hover:text-black dark:hover:text-white transition">Projects</a>
+      <a href="#about" class="hover:text-black dark:hover:text-white transition">About</a>
+      <a href="#contact" class="hover:text-black dark:hover:text-white transition">Contact</a>
       <button id="themeToggle" class="text-sm px-3 py-2 border rounded-md text-zinc-600 dark:text-white border-zinc-300 dark:border-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-300 flex items-center gap-2">
         <span id="themeIcon">🌙</span> Theme
       </button>
-    </div>
+    </nav>
+  </div>
+
+  <!-- 手機導覽列 -->
+  <div id="mobileMenu" class="md:hidden mt-4 px-4 hidden flex-col gap-2 text-sm text-zinc-700 dark:text-zinc-200">
+    <a href="#home" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">Home</a>
+    <a href="blog.html" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">Blog</a>
+    <a href="projects.html" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">Projects</a>
+    <a href="#about" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">About</a>
+    <a href="#contact" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">Contact</a>
   </div>
 </header>
+
 
 
 <main>
@@ -401,6 +414,15 @@
     });
   });
 </script>
+  
+<script>
+  // 📱 漢堡選單切換控制
+  document.getElementById("menuToggle").addEventListener("click", () => {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("hidden");
+  });
+</script>
+
 
 
 
