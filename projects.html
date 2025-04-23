@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth transition-colors duration-300">
+<html lang="en" class="scroll-smooth transition-colors duration-300" id="htmlRoot">
+<html lang="en" class="scroll-smooth transition-colors duration-300 transition-none">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -37,9 +38,10 @@
       <a href="index.html" class="hover:underline">← Home</a>
       <a href="spock.html" class="hover:underline">SPOCK →</a>
     </nav>
-    <button id="themeToggle" class="text-sm px-3 py-2 border rounded-md text-zinc-600 dark:text-white border-zinc-300 dark:border-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition flex items-center gap-2">
-      <span id="themeIcon">🌙</span>
-    </button>
+    <button id="themeToggle" class="text-sm px-3 py-2 border rounded-md border-zinc-300 dark:border-zinc-600 text-zinc-600 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+  <span id="themeIcon">🌙</span> Theme
+</button>
+
   </div>
 </header>
 
@@ -148,6 +150,34 @@
       }
     });
   });
+// Theme toggle
+const root = document.documentElement;
+const themeBtn = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+
+function setTheme(mode) {
+  root.classList.toggle('dark', mode === 'dark');
+  localStorage.setItem('theme', mode);
+  if (themeIcon) {
+    themeIcon.textContent = mode === 'dark' ? '🌞' : '🌙';
+  }
+}
+  setTimeout(() => {
+  document.documentElement.classList.remove('transition-none');
+}, 100);
+
+
+// 初次載入時依據偏好或上次選擇設定主題
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+if (themeBtn) {
+  themeBtn.addEventListener('click', () => {
+    const isDark = root.classList.contains('dark');
+    setTheme(isDark ? 'light' : 'dark');
+  });
+}
 
   // Modal logic
   function openModal(id) {
