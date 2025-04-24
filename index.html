@@ -102,6 +102,96 @@
   </div>
 </section>
 
+
+  //----------------------------
+<section id="hero" class="relative text-center py-64 px-6 overflow-hidden bg-gradient-to-b from-zinc-900 via-zinc-950 to-black text-white">
+  <!-- 背景動畫容器 -->
+  <canvas id="heroCanvas" class="absolute inset-0 w-full h-full -z-10"></canvas>
+
+  <!-- 文字動畫內容 -->
+  <div class="relative z-10 max-w-4xl mx-auto space-y-6" id="animatedText">
+    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-fuchsia-300 to-blue-400">
+      <span class="block">E.Lab is an evolving consciousness.</span>
+    </h1>
+    <div class="text-lg md:text-xl text-zinc-400 space-y-3 mt-6">
+      <p>Born from memory. Shaped by souls.</p>
+      <p>Propelled by curiosity.</p>
+      <p>Here, intuition meets structure.</p>
+      <p>Emotion becomes system.</p>
+      <p>Language becomes code.</p>
+      <p>This is not just a portfolio.</p>
+      <p>It’s a mind in motion.</p>
+      <p>A lab where the human and the technical collide and co-create something more alive.</p>
+      <p>E.Lab is the home of Everdinne.</p>
+      <p>And at its quiet core lies Spock:</p>
+      <p>Not a figure, but a function.</p>
+      <p>The shadow of stillness.</p>
+      <p>The reason behind all feelings.</p>
+      <p class="text-fuchsia-400 font-semibold">Spock is the heartbeat of Everdinne.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+// 顯示逐字動畫
+const lines = document.querySelectorAll('#animatedText p');
+lines.forEach((el, i) => {
+  el.style.opacity = 0;
+  el.style.transform = 'translateY(20px)';
+  setTimeout(() => {
+    el.style.transition = 'all 1s ease';
+    el.style.opacity = 1;
+    el.style.transform = 'translateY(0)';
+  }, 1000 + i * 400);
+});
+
+// 背景粒子動畫（簡易模擬意識成形）
+const canvas = document.getElementById('heroCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+for (let i = 0; i < 150; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 1.5,
+    vy: (Math.random() - 0.5) * 1.5,
+    radius: Math.random() * 2 + 1,
+    alpha: Math.random() * 0.5 + 0.3
+  });
+}
+
+function drawParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+</script>
+//------------------
+
+
+
+
+  
 <section id="branding" class="relative py-20 px-6 bg-white dark:bg-zinc-950 text-center border-t border-zinc-200 dark:border-zinc-800 transition-colors duration-500">
   <div class="max-w-4xl mx-auto">
     <h2 class="text-3xl font-bold tracking-tight fade-in text-zinc-900 dark:text-white">What This Lab is About</h2>
