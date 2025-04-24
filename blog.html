@@ -1,143 +1,84 @@
 <!DOCTYPE html>
-<html lang="en" class="transition-colors duration-300 scroll-smooth">
+ <html lang="en" class="scroll-smooth transition-colors duration-300">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About – Everdinne's Lab</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script> 
-    tailwind.config = { 
-      darkMode: 'class'
-    }
-  </script>
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-
-    .card-hover {
-      transition: box-shadow 0.4s ease, transform 0.3s ease;
-    }
-    .card-hover:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(255, 128, 255, 0.2);
-    }
-  </style>
-</head>
-<body class="bg-white dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100 transition-colors duration-300">
-
-  <!-- Header -->
-  <header class="w-full px-6 py-5 bg-white/80 dark:bg-zinc-900/80 backdrop-blur border-b border-zinc-200 dark:border-zinc-800 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <div class="flex items-center space-x-3">
-        <div class="w-3 h-3 rounded-full bg-gradient-to-br from-fuchsia-500 to-blue-400"></div>
-        <div class="flex flex-col leading-tight">
-          <span class="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">E.Lab</span>
-          <span class="text-xs text-zinc-500 dark:text-zinc-400 tracking-wider">Projects · Experiments · Systems</span>
-        </div>
-      </div>
-      <nav class="flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
-        <a href="index.html" class="hover:text-black dark:hover:text-white transition">← Home</a>
-        <a href="spock.html" class="hover:text-black dark:hover:text-white transition">→ SPOCK</a>
-        <button id="themeToggle" class="text-sm px-3 py-2 border rounded-md text-zinc-600 dark:text-white border-zinc-300 dark:border-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition flex items-center gap-2">
-          <span id="themeIcon">🌙</span>
-        </button>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="relative py-32 px-6 text-center bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 overflow-hidden">
-    <div class="absolute -z-10 w-full h-full top-0 left-0">
-      <div class="w-[400px] h-[400px] bg-fuchsia-300/10 blur-[120px] rounded-full absolute -top-20 left-1/3 animate-pulse"></div>
-      <div class="w-[400px] h-[400px] bg-blue-300/10 blur-[100px] rounded-full absolute bottom-10 right-1/4 animate-pulse"></div>
-    </div>
-    <h1 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-fuchsia-500 to-blue-400 bg-clip-text text-transparent tracking-tight mb-4">About Everdinne's Lab</h1>
-    <p class="text-lg text-zinc-600 dark:text-zinc-400">Where ideas meet implementation</p>
-  </section>
-
-  <!-- About Me -->
-  <section class="py-24 px-6 text-center bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
-    <h2 class="text-3xl font-bold tracking-tight mb-4 text-zinc-900 dark:text-white">About Me</h2>
-    <img src="images/207711730.jpg" alt="Profile" class="w-28 h-28 mx-auto mb-6 rounded-full border-4 border-fuchsia-500 shadow-lg" />
-    <p class="max-w-xl mx-auto text-zinc-600 dark:text-zinc-400">I'm Everdinne, a data tinkerer, AI experimenter, and digital systems explorer. This lab is my thinking playground where curiosity turns into code.</p>
-    <div class="mt-4 flex justify-center gap-3">
-      <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm text-zinc-600 dark:text-zinc-300">Data Thinker</span>
-      <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm text-zinc-600 dark:text-zinc-300">AI Tinkerer</span>
-      <span class="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 rounded-full text-sm text-zinc-600 dark:text-zinc-300">API Wanderer</span>
-    </div>
-    <div class="mt-6 flex justify-center gap-4 text-zinc-600 dark:text-zinc-400">
-      <a href="https://github.com/" target="_blank" class="hover:underline">GitHub</a>
-      <a href="mailto:you@example.com" class="hover:underline">Email</a>
-    </div>
-  </section>
-
-  <!-- About the Lab -->
-  <section class="py-24 px-6 bg-zinc-50 dark:bg-zinc-900 text-center border-b border-zinc-200 dark:border-zinc-800">
-    <h2 class="text-3xl font-bold tracking-tight mb-4 text-zinc-900 dark:text-white">About the Lab</h2>
-    <p class="max-w-2xl mx-auto text-zinc-600 dark:text-zinc-400">Everdinne's Lab is a digital lab for strange data stories, creative logic systems, and visualized philosophy. It's where experimentation thrives.</p>
-    <div class="mt-8 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-      <div class="p-6 bg-white dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700 text-left shadow card-hover">
-        <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Key Features</h3>
-        <ul class="text-zinc-600 dark:text-zinc-400 list-disc list-inside space-y-1">
-          <li>Dark mode support</li>
-          <li>Modular architecture</li>
-          <li>Creative animations & fade-ins</li>
-          <li>Open to weirdness</li>
-        </ul>
-      </div>
-      <div class="p-6 bg-white dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700 text-left shadow card-hover">
-        <h3 class="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Mission</h3>
-        <p>To create, test, and share unconventional ideas in an open-ended way—across AI, data, design, and thought.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="text-center py-20 px-6 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
-    <p class="text-zinc-600 dark:text-zinc-400 mb-4">Back to where it all begins.</p>
-    <a href="index.html" class="px-6 py-3 rounded-full bg-fuchsia-600 text-white hover:bg-fuchsia-700 transition shadow-md">← Return Home</a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-white dark:bg-zinc-950 py-10 px-4 border-t border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 text-sm text-center transition-colors duration-500">
-    © 2025 Everdinne — Curiously crafted.
-  </footer>
-
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray('section').forEach(section => {
-      gsap.from(section, {
-        scrollTrigger: {
-          trigger: section,
-          start: "top 85%",
-        },
-        opacity: 0,
-        y: 30,
-        duration: 1,
-        ease: "power3.out"
-      });
-    });
-
-    const root = document.documentElement;
-    const themeBtn = document.getElementById('themeToggle');
-    const icon = document.getElementById('themeIcon');
-    const setTheme = mode => {
-      root.classList.toggle('dark', mode === 'dark');
-      icon.textContent = mode === 'dark' ? '🌞' : '🌙';
-      localStorage.setItem('theme', mode);
-    };
-    const stored = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(stored || (prefersDark ? 'dark' : 'light'));
-    themeBtn.addEventListener('click', () => {
-      const current = root.classList.contains('dark') ? 'light' : 'dark';
-      setTheme(current);
-    });
-  </script>
-</body>
-</html>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Blog – Everdinne's Lab</title>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+   <script src="https://cdn.tailwindcss.com"></script>
+   <script>
+     tailwind.config = {
+       darkMode: 'class'
+     }
+   </script>
+   <style>
+     body {
+       font-family: 'Inter', sans-serif;
+     }
+   </style>
+ </head>
+ <body class="bg-white dark:bg-zinc-950 text-zinc-800 dark:text-zinc-100 transition-colors duration-300">
+  <!-- ✅ Header 區（與主頁一致） -->
+   <header class="w-full px-6 py-5 bg-white/80 dark:bg-zinc-900/80 backdrop-blur border-b border-zinc-200 dark:border-zinc-800 sticky top-0 z-50 transition-colors duration-500">
+     <div class="max-w-7xl mx-auto flex justify-between items-center">
+   <div class="flex flex-col leading-tight">
+           <span class="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">E.Lab</span>
+           <span class="text-xs text-zinc-500 dark:text-zinc-400 tracking-wider">Blog · Notes · Insights</span>
+         </div>
+<button id="menuToggle" class="md:hidden text-zinc-700 dark:text-white text-2xl focus:outline-none">☰</button>
+       <nav id="mainNav" class="hidden md:flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
+         <a href="index.html" class="hover:text-black dark:hover:text-white transition">← Home</a>
+         <a href="spock.html" class="hover:text-black dark:hover:text-white transition">→ SPOCK</a>
+         <button id="themeToggle" class="text-sm px-3 py-2 border rounded-md text-zinc-600 dark:text-white border-zinc-300 dark:border-zinc-600 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition flex items-center gap-2">
+ </nav>
+     </div>
+     <div id="mobileMenu" class="md:hidden mt-4 px-4 hidden flex-col gap-2 text-sm text-zinc-700 dark:text-zinc-200">
+       <a href="index.html" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">← Home</a>
+       <a href="spock.html" class="block py-2 border-b border-zinc-200 dark:border-zinc-700">→ SPOCK</a>
+       <button id="mobileThemeToggle" class="w-full text-left py-2 border-b border-zinc-200 dark:border-zinc-700 flex items-center gap-2">
+         <span id="mobileThemeIcon">🌙</span> Toggle Theme
+       </button>
+     </div>
+   </header>
+<!-- Blog Hero -->
+   <section id="blog-hero" class="text-center py-32 px-6 border-b border-zinc-200 dark:border-zinc-800 fade-in">
+     <div class="max-w-3xl mx-auto space-y-4">
+       <h2 class="text-5xl font-bold tracking-tight bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 text-transparent bg-clip-text">
+         Welcome to the Journal
+       </h2>
+       <p class="text-lg text-zinc-600 dark:text-zinc-400 italic">
+         Essays, thoughts, and weekly fragments from Everdinne's learning orbit.
+       </p>
+     </div>
+   </section>
+<!-- Blog Posts -->
+   <main class="max-w-5xl mx-auto px-6 py-20 space-y-12">
+     <!-- Blog Entry -->
+     <article class="fade-in bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow hover:shadow-lg transition cursor-pointer hover:scale-[1.01] transform duration-300">
+       <div class="text-sm text-fuchsia-500 dark:text-fuchsia-400 uppercase tracking-widest mb-2">Week 16</div>
+       <h3 class="text-2xl font-semibold mb-2">What Philosophy Taught Me About Debugging</h3>
+       <p class="text-zinc-600 dark:text-zinc-400">It’s not just the code that breaks. Sometimes, it’s our assumptions. In this piece, I explore how logical frameworks and thought experiments help me interpret error messages differently...</p>
+       <a href="#" class="mt-4 inline-block text-fuchsia-500 hover:underline text-sm">Read more →</a>
+     </article>
+<!-- Blog Entry -->
+     <article class="fade-in bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow hover:shadow-lg transition cursor-pointer hover:scale-[1.01] transform duration-300">
+       <div class="text-sm text-blue-500 dark:text-blue-400 uppercase tracking-widest mb-2">Reflections</div>
+       <h3 class="text-2xl font-semibold mb-2">How I Made Peace with Ambiguity in AI</h3>
+       <p class="text-zinc-600 dark:text-zinc-400">The idea of an "exact system" has always haunted me. But perhaps what makes systems humane is their imperfection. This essay dives into ambiguity as a feature, not a bug...</p>
+       <a href="#" class="mt-4 inline-block text-blue-500 hover:underline text-sm">Read more →</a>
+     </article>
+   </main>
+<!-- Footer -->
+   <footer class="bg-white dark:bg-zinc-950 py-10 px-4 border-t border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 text-sm text-center transition-colors duration-500">
+     © 2025 Everdinne — Crafted with curiosity and humane.
+   </footer>
+ 
+   <!-- Scripts -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+   <script src="scripts/app.js"></script>
+ 
+ </body>
+ </html>
 
 
